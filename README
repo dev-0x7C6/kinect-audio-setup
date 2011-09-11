@@ -1,0 +1,7 @@
+Install kinect_upload_fw first:
+
+  $ make install
+
+Then run the firmware download script:
+
+  $ ./kinect_fetch_fw /lib/firmware/kinect
