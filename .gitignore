@@ -1,0 +1,4 @@
+kinect_upload_fw/kinect_upload_fw
+kinect_upload_fw/*.o
+*~
+*.swp
