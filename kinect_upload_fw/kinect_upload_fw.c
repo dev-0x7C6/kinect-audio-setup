@@ -104,14 +104,14 @@ int get_reply() {
 	if(fn_le32(buffer.status) != 0) {
 		LOG("Notice reading reply: last uint32_t was nonzero: %d\n", buffer.status);
 	}
-	
+
 	LOG("Reading reply: ");
 	int i;
 	for(i = 0; i < transferred; ++i) {
 		LOG("%02X ", ((unsigned char*)(&buffer))[i]);
 	}
 	LOG("\n");
-	
+
 	return res;
 }
 
@@ -212,10 +212,9 @@ int main(int argc, char** argv) {
 	res = get_reply();
 	seq++;
 	// Now the device reenumerates.
-	
+
 cleanup:
 	libusb_close(dev);
 	libusb_exit(NULL);
 	return 0;
 }
-
