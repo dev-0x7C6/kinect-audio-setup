@@ -12,3 +12,6 @@ install:
 
 clean: 
 	make -C kinect_upload_fw clean
+
+changelog:
+	git log --pretty="format:%ai  %aN  <%aE>%n%n%x09* %s%d%n" > ChangeLog
