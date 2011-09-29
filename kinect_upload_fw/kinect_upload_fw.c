@@ -115,7 +115,8 @@ static int get_reply(void) {
 }
 
 int main(int argc, char** argv) {
-	char* filename = "firmware.bin";
+	char default_filename[] = "firmware.bin";
+	char* filename = default_filename;
 	if (argc == 2) {
 		filename = argv[1];
 	}
