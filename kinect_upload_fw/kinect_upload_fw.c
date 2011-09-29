@@ -36,7 +36,7 @@
 #include <libusb.h>
 
 static libusb_device_handle *dev;
-int seq;
+unsigned int seq;
 
 typedef struct {
 	uint32_t magic;
@@ -162,7 +162,7 @@ int main(int argc, char** argv) {
 	seq++;
 
 	uint32_t addr = 0x00080000;
-	char page[0x4000];
+	unsigned char page[0x4000];
 	int read;
 	do {
 		read = fread(page, 1, 0x4000, fw);
