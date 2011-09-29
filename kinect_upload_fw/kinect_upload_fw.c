@@ -89,7 +89,7 @@ static int get_reply(void) {
 	int transferred;
 	res = libusb_bulk_transfer(dev, 0x81, (unsigned char*)&buffer, 512, &transferred, 0);
 	if(res != 0 || transferred != sizeof(status_code)) {
-		LOG("Error reading reply: %d\ttransferred: %d (expected %d)\n", res, transferred, sizeof(status_code));
+		LOG("Error reading reply: %d\ttransferred: %d (expected %lu)\n", res, transferred, sizeof(status_code));
 		return res;
 	}
 	if(fn_le32(buffer.magic) != 0x0a6fe000) {
@@ -154,7 +154,7 @@ int main(int argc, char** argv) {
 
 	res = libusb_bulk_transfer(dev, 1, (unsigned char*)&cmd, sizeof(cmd), &transferred, 0);
 	if(res != 0 || transferred != sizeof(cmd)) {
-		LOG("Error: res: %d\ttransferred: %d (expected %d)\n",res, transferred, sizeof(cmd));
+		LOG("Error: res: %d\ttransferred: %d (expected %lu)\n",res, transferred, sizeof(cmd));
 		goto cleanup;
 	}
 	res = get_first_reply(); // This first one doesn't have the usual magic bytes at the beginning, and is 96 bytes long - much longer than the usual 12-byte replies.
@@ -179,7 +179,7 @@ int main(int argc, char** argv) {
 		// Send it off!
 		res = libusb_bulk_transfer(dev, 1, (unsigned char*)&cmd, sizeof(cmd), &transferred, 0);
 		if(res != 0 || transferred != sizeof(cmd)) {
-			LOG("Error: res: %d\ttransferred: %d (expected %d)\n",res, transferred, sizeof(cmd));
+			LOG("Error: res: %d\ttransferred: %d (expected %lu)\n",res, transferred, sizeof(cmd));
 			goto cleanup;
 		}
 		int bytes_sent = 0;
@@ -205,7 +205,7 @@ int main(int argc, char** argv) {
 	dump_bl_cmd(cmd);
 	res = libusb_bulk_transfer(dev, 1, (unsigned char*)&cmd, sizeof(cmd), &transferred, 0);
 	if(res != 0 || transferred != sizeof(cmd)) {
-		LOG("Error: res: %d\ttransferred: %d (expected %d)\n", res, transferred, sizeof(cmd));
+		LOG("Error: res: %d\ttransferred: %d (expected %lu)\n", res, transferred, sizeof(cmd));
 		goto cleanup;
 	}
 	res = get_reply();
