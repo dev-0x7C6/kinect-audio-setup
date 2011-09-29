@@ -29,8 +29,8 @@ CFLAGS += -fno-common \
 CFLAGS  += $(shell pkg-config --cflags libusb-1.0)
 LDFLAGS += $(shell pkg-config --libs libusb-1.0)
 
-PREFIX  ?= /usr/local
-bindir	= $(PREFIX)/sbin
+PREFIX ?= /usr/local
+bindir := $(PREFIX)/sbin
 
 kinect_upload_fw: kinect_upload_fw.o
 
