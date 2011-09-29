@@ -64,7 +64,7 @@ void dump_bl_cmd(bootloader_command cmd) {
 	LOG("\n");
 }
 
-int get_first_reply() {
+int get_first_reply(void) {
 	unsigned char buffer[512];
 	int res;
 	int transferred;
@@ -83,7 +83,7 @@ int get_first_reply() {
 }
 
 
-int get_reply() {
+int get_reply(void) {
 	unsigned char dump[512];
 	status_code buffer = ((status_code*)dump)[0];
 	int res;
