@@ -57,14 +57,14 @@ typedef struct {
 #define fn_le32(x) (x)
 // TODO: support architectures that aren't little-endian
 
-void dump_bl_cmd(bootloader_command cmd) {
+static void dump_bl_cmd(bootloader_command cmd) {
 	int i;
 	for(i = 0; i < 24; i++)
 		LOG("%02X ", ((unsigned char*)(&cmd))[i]);
 	LOG("\n");
 }
 
-int get_first_reply(void) {
+static int get_first_reply(void) {
 	unsigned char buffer[512];
 	int res;
 	int transferred;
@@ -82,8 +82,7 @@ int get_first_reply(void) {
 	return res;
 }
 
-
-int get_reply(void) {
+static int get_reply(void) {
 	unsigned char dump[512];
 	status_code buffer = ((status_code*)dump)[0];
 	int res;
