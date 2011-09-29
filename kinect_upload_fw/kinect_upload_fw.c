@@ -83,31 +83,37 @@ static int get_first_reply(void) {
 }
 
 static int get_reply(void) {
-	unsigned char dump[512];
-	status_code buffer = ((status_code*)dump)[0];
+	union {
+		status_code buffer;
+		/* The following is needed because libusb_bulk_transfer might
+		 * fail when working on a buffer smaller than 512 bytes.
+		 */
+		unsigned char dump[512];
+	} reply;
 	int res;
 	int transferred;
-	res = libusb_bulk_transfer(dev, 0x81, (unsigned char*)&buffer, 512, &transferred, 0);
+
+	res = libusb_bulk_transfer(dev, 0x81, reply.dump, 512, &transferred, 0);
 	if(res != 0 || transferred != sizeof(status_code)) {
 		LOG("Error reading reply: %d\ttransferred: %d (expected %lu)\n", res, transferred, sizeof(status_code));
 		return res;
 	}
-	if(fn_le32(buffer.magic) != 0x0a6fe000) {
-		LOG("Error reading reply: invalid magic %08X\n",buffer.magic);
+	if(fn_le32(reply.buffer.magic) != 0x0a6fe000) {
+		LOG("Error reading reply: invalid magic %08X\n", reply.buffer.magic);
 		return -1;
 	}
-	if(fn_le32(buffer.seq) != seq) {
-		LOG("Error reading reply: non-matching sequence number %08X (expected %08X)\n", buffer.seq, seq);
+	if(fn_le32(reply.buffer.seq) != seq) {
+		LOG("Error reading reply: non-matching sequence number %08X (expected %08X)\n", reply.buffer.seq, seq);
 		return -1;
 	}
-	if(fn_le32(buffer.status) != 0) {
-		LOG("Notice reading reply: last uint32_t was nonzero: %d\n", buffer.status);
+	if(fn_le32(reply.buffer.status) != 0) {
+		LOG("Notice reading reply: last uint32_t was nonzero: %d\n", reply.buffer.status);
 	}
 
 	LOG("Reading reply: ");
 	int i;
 	for(i = 0; i < transferred; ++i) {
-		LOG("%02X ", ((unsigned char*)(&buffer))[i]);
+		LOG("%02X ", reply.dump[i]);
 	}
 	LOG("\n");
 
