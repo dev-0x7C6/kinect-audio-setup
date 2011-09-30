@@ -24,7 +24,7 @@ LOADER_PATH=${2:-"/usr/local/sbin/kinect_upload_fw"}
 command -v wget >/dev/null 2>&1 || { echo "$(basename "$0"): command 'wget' is needed." ; exit 1; }
 command -v 7z >/dev/null 2>&1 || { echo "$(basename "$0"): command '7z' is needed." ; exit 1; }
 
-TEMPDIR="$(mktemp -d)"
+TEMPDIR=$(mktemp -d)
 trap 'rm -rf "$TEMPDIR" >/dev/null 2>&1' 0
 trap "exit 2" 1 2 3 15
 
