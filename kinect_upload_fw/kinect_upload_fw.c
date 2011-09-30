@@ -32,6 +32,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <string.h>
 #include <errno.h>
 #include <libusb.h>
 
@@ -128,7 +129,7 @@ int main(int argc, char** argv) {
 	}
 	FILE* fw = fopen(filename, "r");
 	if(fw == NULL) {
-		fprintf(stderr, "Failed to open %s: error %d", filename, errno);
+		fprintf(stderr, "Failed to open %s: %s\n", filename, strerror(errno));
 		return errno;
 	}
 
