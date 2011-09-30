@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Fetch and install the firmware to get the kinect Audio working on linux
+# kinect_fetch_fw -  Fetch and install the Microsoft Kinect UAC firmware
 #
 # Copyright (C) 2011  Antonio Ospite <ospite@studenti.unina.it>
 #
