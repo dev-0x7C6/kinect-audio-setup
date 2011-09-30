@@ -60,7 +60,7 @@ typedef struct {
 
 static void dump_bl_cmd(bootloader_command cmd) {
 	int i;
-	for(i = 0; i < 24; i++)
+	for (i = 0; i < 24; i++)
 		LOG("%02X ", ((unsigned char*)(&cmd))[i]);
 	LOG("\n");
 }
@@ -70,13 +70,13 @@ static int get_first_reply(void) {
 	int res;
 	int transferred;
 	res = libusb_bulk_transfer(dev, 0x81, buffer, 512, &transferred, 0);
-	if(res != 0 ) {
+	if (res != 0 ) {
 		LOG("Error reading first reply: %d\ttransferred: %d (expected %d)\n", res, transferred, 0x60);
 		return res;
 	}
 	LOG("Reading first reply: ");
 	int i;
-	for(i = 0; i < transferred; ++i) {
+	for (i = 0; i < transferred; ++i) {
 		LOG("%02X ", buffer[i]);
 	}
 	LOG("\n");
@@ -95,25 +95,25 @@ static int get_reply(void) {
 	int transferred;
 
 	res = libusb_bulk_transfer(dev, 0x81, reply.dump, 512, &transferred, 0);
-	if(res != 0 || transferred != sizeof(status_code)) {
+	if (res != 0 || transferred != sizeof(status_code)) {
 		LOG("Error reading reply: %d\ttransferred: %d (expected %lu)\n", res, transferred, sizeof(status_code));
 		return res;
 	}
-	if(fn_le32(reply.buffer.magic) != 0x0a6fe000) {
+	if (fn_le32(reply.buffer.magic) != 0x0a6fe000) {
 		LOG("Error reading reply: invalid magic %08X\n", reply.buffer.magic);
 		return -1;
 	}
-	if(fn_le32(reply.buffer.seq) != seq) {
+	if (fn_le32(reply.buffer.seq) != seq) {
 		LOG("Error reading reply: non-matching sequence number %08X (expected %08X)\n", reply.buffer.seq, seq);
 		return -1;
 	}
-	if(fn_le32(reply.buffer.status) != 0) {
+	if (fn_le32(reply.buffer.status) != 0) {
 		LOG("Notice reading reply: last uint32_t was nonzero: %d\n", reply.buffer.status);
 	}
 
 	LOG("Reading reply: ");
 	int i;
-	for(i = 0; i < transferred; ++i) {
+	for (i = 0; i < transferred; ++i) {
 		LOG("%02X ", reply.dump[i]);
 	}
 	LOG("\n");
@@ -124,21 +124,23 @@ static int get_reply(void) {
 int main(int argc, char** argv) {
 	char default_filename[] = "firmware.bin";
 	char* filename = default_filename;
+
 	if (argc == 2) {
 		filename = argv[1];
 	}
+
 	FILE* fw = fopen(filename, "r");
-	if(fw == NULL) {
+	if (fw == NULL) {
 		fprintf(stderr, "Failed to open %s: %s\n", filename, strerror(errno));
 		return errno;
 	}
 
 	libusb_init(NULL);
-	libusb_set_debug(0,3);
-	dev = libusb_open_device_with_vid_pid(NULL, 0x045e, 0x02ad);
+	libusb_set_debug(0, 3);
 
-	if(dev == NULL) {
-		printf("Couldn't open device.\n");
+	dev = libusb_open_device_with_vid_pid(NULL, 0x045e, 0x02ad);
+	if (dev == NULL) {
+		fprintf(stderr, "Couldn't open device.\n");
 		return 1;
 	}
 
@@ -157,12 +159,13 @@ int main(int argc, char** argv) {
 
 	LOG("About to send: ");
 	dump_bl_cmd(cmd);
+
 	int res;
 	int transferred;
 
 	res = libusb_bulk_transfer(dev, 1, (unsigned char*)&cmd, sizeof(cmd), &transferred, 0);
-	if(res != 0 || transferred != sizeof(cmd)) {
-		LOG("Error: res: %d\ttransferred: %d (expected %lu)\n",res, transferred, sizeof(cmd));
+	if (res != 0 || transferred != sizeof(cmd)) {
+		LOG("Error: res: %d\ttransferred: %d (expected %lu)\n", res, transferred, sizeof(cmd));
 		goto cleanup;
 	}
 	res = get_first_reply(); // This first one doesn't have the usual magic bytes at the beginning, and is 96 bytes long - much longer than the usual 12-byte replies.
@@ -174,7 +177,7 @@ int main(int argc, char** argv) {
 	int read;
 	do {
 		read = fread(page, 1, 0x4000, fw);
-		if(read <= 0) {
+		if (read <= 0) {
 			break;
 		}
 		//LOG("");
@@ -186,16 +189,16 @@ int main(int argc, char** argv) {
 		dump_bl_cmd(cmd);
 		// Send it off!
 		res = libusb_bulk_transfer(dev, 1, (unsigned char*)&cmd, sizeof(cmd), &transferred, 0);
-		if(res != 0 || transferred != sizeof(cmd)) {
-			LOG("Error: res: %d\ttransferred: %d (expected %lu)\n",res, transferred, sizeof(cmd));
+		if (res != 0 || transferred != sizeof(cmd)) {
+			LOG("Error: res: %d\ttransferred: %d (expected %lu)\n", res, transferred, sizeof(cmd));
 			goto cleanup;
 		}
 		int bytes_sent = 0;
-		while(bytes_sent < read) {
+		while (bytes_sent < read) {
 			int to_send = (read - bytes_sent > 512 ? 512 : read - bytes_sent);
 			res = libusb_bulk_transfer(dev, 1, &page[bytes_sent], to_send, &transferred, 0);
-			if(res != 0 || transferred != to_send) {
-				LOG("Error: res: %d\ttransferred: %d (expected %d)\n",res, transferred, to_send);
+			if (res != 0 || transferred != to_send) {
+				LOG("Error: res: %d\ttransferred: %d (expected %d)\n", res, transferred, to_send);
 				goto cleanup;
 			}
 			bytes_sent += to_send;
@@ -212,7 +215,7 @@ int main(int argc, char** argv) {
 	cmd.write_addr = fn_le32(0x00080030);
 	dump_bl_cmd(cmd);
 	res = libusb_bulk_transfer(dev, 1, (unsigned char*)&cmd, sizeof(cmd), &transferred, 0);
-	if(res != 0 || transferred != sizeof(cmd)) {
+	if (res != 0 || transferred != sizeof(cmd)) {
 		LOG("Error: res: %d\ttransferred: %d (expected %lu)\n", res, transferred, sizeof(cmd));
 		goto cleanup;
 	}
