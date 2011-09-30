@@ -124,6 +124,7 @@ static int get_reply(void) {
 int main(int argc, char** argv) {
 	char default_filename[] = "firmware.bin";
 	char* filename = default_filename;
+	int res = 0;
 
 	if (argc == 2) {
 		filename = argv[1];
@@ -141,7 +142,8 @@ int main(int argc, char** argv) {
 	dev = libusb_open_device_with_vid_pid(NULL, 0x045e, 0x02ad);
 	if (dev == NULL) {
 		fprintf(stderr, "Couldn't open device.\n");
-		return 1;
+		res = -ENODEV;
+		goto fail_libusb_open;
 	}
 
 	libusb_set_configuration(dev, 1);
@@ -160,7 +162,6 @@ int main(int argc, char** argv) {
 	LOG("About to send: ");
 	dump_bl_cmd(cmd);
 
-	int res;
 	int transferred;
 
 	res = libusb_bulk_transfer(dev, 1, (unsigned char*)&cmd, sizeof(cmd), &transferred, 0);
@@ -225,6 +226,8 @@ int main(int argc, char** argv) {
 
 cleanup:
 	libusb_close(dev);
+fail_libusb_open:
 	libusb_exit(NULL);
-	return 0;
+	fclose(fw);
+	return res;
 }
