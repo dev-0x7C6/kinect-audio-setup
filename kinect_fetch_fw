@@ -16,6 +16,7 @@
 set -e
 
 SDK_URL=${SDK_URL:-"http://download.microsoft.com/download/8/4/C/84C9EF40-EE49-42C2-AE26-C6E30921182F/KinectSDK32.msi"}
+SDK_MD5="a043c40f35bf14a5139dfbf6cb14f687"
 
 [ $# -lt 1 ] && { echo "usage: $(basename "$0") <firmware destdir> [<path of kinect_upload_fw binary>]" 1>&2; exit 1; }
 FW_DESTDIR=$(readlink -f $1)
@@ -31,6 +32,14 @@ trap "exit 2" 1 2 3 15
 cd "$TEMPDIR"
 ARCHIVE_NAME=$(basename "$SDK_URL")
 rm -f "$ARCHIVE_NAME" && wget "$SDK_URL" -O "$ARCHIVE_NAME"
+
+ARCHIVE_MD5=$(md5sum "$ARCHIVE_NAME" | grep --only-matching -m 1 '^[0-9a-f]*')
+if [ "$ARCHIVE_MD5" != "$SDK_MD5" ];
+then
+  echo "$(basename "$0"): Invalid hash for file '$ARCHIVE_NAME'." 1>&2
+  exit 1
+fi
+
 7z e -y -r "$ARCHIVE_NAME" "UACFirmware.*"
 
 FW_FILE=$(ls UACFirmware.* | cut -d ' ' -f 1)
