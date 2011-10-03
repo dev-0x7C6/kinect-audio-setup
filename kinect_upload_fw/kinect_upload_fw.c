@@ -36,6 +36,8 @@
 #include <errno.h>
 #include <libusb.h>
 
+#include "endian.h"
+
 static libusb_device_handle *dev;
 unsigned int seq;
 
@@ -55,8 +57,15 @@ typedef struct {
 } status_code;
 
 #define LOG(...) printf(__VA_ARGS__)
+
+#if __BYTE_ORDER == __BIG_ENDIAN
+static inline uint32_t fn_le32(uint32_t d)
+{
+	return (d<<24) | ((d<<8)&0xFF0000) | ((d>>8)&0xFF00) | (d>>24);
+}
+#else
 #define fn_le32(x) (x)
-// TODO: support architectures that aren't little-endian
+#endif
 
 static void dump_bl_cmd(bootloader_command cmd) {
 	int i;
