@@ -17,12 +17,12 @@ set -e
 
 SDK_URL=${SDK_URL:-"http://download.microsoft.com/download/8/4/C/84C9EF40-EE49-42C2-AE26-C6E30921182F/KinectSDK32.msi"}
 
-[ $# -lt 1 ] && { echo "usage: $(basename "$0") <firmware destdir> [<path of kinect_upload_fw binary>]"; exit 1; }
+[ $# -lt 1 ] && { echo "usage: $(basename "$0") <firmware destdir> [<path of kinect_upload_fw binary>]" 1>&2; exit 1; }
 FW_DESTDIR=$(readlink -f $1)
 LOADER_PATH=${2:-"/usr/local/sbin/kinect_upload_fw"}
 
-command -v wget >/dev/null 2>&1 || { echo "$(basename "$0"): command 'wget' is needed." ; exit 1; }
-command -v 7z >/dev/null 2>&1 || { echo "$(basename "$0"): command '7z' is needed." ; exit 1; }
+command -v wget >/dev/null 2>&1 || { echo "$(basename "$0"): command 'wget' is needed." 1>&2 ; exit 1; }
+command -v 7z >/dev/null 2>&1 || { echo "$(basename "$0"): command '7z' is needed." 1>&2; exit 1; }
 
 TEMPDIR=$(mktemp -d)
 trap 'rm -rf "$TEMPDIR" >/dev/null 2>&1' 0
