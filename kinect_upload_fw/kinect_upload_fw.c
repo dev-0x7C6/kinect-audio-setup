@@ -39,7 +39,7 @@
 #include "endian.h"
 
 static libusb_device_handle *dev;
-unsigned int seq;
+static unsigned int seq;
 
 typedef struct {
 	uint32_t magic;
@@ -146,7 +146,7 @@ int main(int argc, char** argv) {
 	}
 
 	libusb_init(NULL);
-	libusb_set_debug(0, 3);
+	libusb_set_debug(NULL, 3);
 
 	dev = libusb_open_device_with_vid_pid(NULL, 0x045e, 0x02ad);
 	if (dev == NULL) {
