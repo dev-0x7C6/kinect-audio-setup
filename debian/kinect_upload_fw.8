@@ -1,0 +1,39 @@
+.\"                                      Hey, EMACS: -*- nroff -*-
+.\" First parameter, NAME, should be all caps
+.\" Second parameter, SECTION, should be 1-8, maybe w/ subsection
+.\" other parameters are allowed: see man(7), man(1)
+.TH KINECT_UPLOAD_FW 8 "September 11, 2011"
+.\" Please adjust this date whenever revising the manpage.
+.\"
+.\" Some roff macros, for reference:
+.\" .nh        disable hyphenation
+.\" .hy        enable hyphenation
+.\" .ad l      left justify
+.\" .ad b      justify to both left and right margins
+.\" .nf        disable filling
+.\" .fi        enable filling
+.\" .br        insert line break
+.\" .sp <n>    insert n+1 empty lines
+.\" for manpage-specific macros, see man(7)
+.SH NAME
+kinect_upload_fw \- Kinect firmware uploader to have an Usb Audio Class device
+.SH SYNOPSIS
+.B kinect_upload_fw <firmware file>
+.SH DESCRIPTION
+.\" TeX users may be more comfortable with the \fB<whatever>\fP and
+.\" \fI<whatever>\fP escape sequences to invode bold face and italics,
+.\" respectively.
+\fBkinect_upload_fw\fP is a program that uploads the Usb Audio Class device 
+firmware to a Microsoft Kinect sensor device.
+.PP
+Before the firmware is uploaded the device shows up as a generic usb device
+with a bulk endpoint, after the firmware upload a reenumeration takes place
+and a Usb Audio Class device becomes available.
+.SH SEE ALSO
+.BR kinect_fetch_fw (8)
+.br
+.SH AUTHOR
+kinect_upload_fw was written by Drew Fisher <drew.m.fisher@gmail.com>.
+.PP
+This manual page was written by Antonio Ospite <ospite@studenti.unina.it>,
+for the Debian project (and may be used by others).

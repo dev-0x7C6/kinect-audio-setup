@@ -1,0 +1,15 @@
+kinect-audio-setup for Debian
+-----------------------------
+
+kinect-audio-setup will download the actual firmware at install time,
+this is to avoid the problem of distributing the binary blob from the
+Microsoft Kinect SDK.
+
+For the device to work out of the box after kinect-audio-setup installation, a 
+recent version of pulseaudio is needed, the profile for the Kinect has been 
+added in commit e93b327:
+http://cgit.freedesktop.org/pulseaudio/pulseaudio/commit/?id=e93b32744c1bafb33d5f3ee40b422bab2d017ae1
+
+pulseaudio 1.0 will include all the needed bits.
+
+ -- Antonio Ospite <ospite@studenti.unina.it>  Sun, 11 Sep 2011 20:47:50 +0200

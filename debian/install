@@ -1,0 +1,2 @@
+kinect_fetch_fw /usr/sbin
+debian/lintian/kinect-audio-setup usr/share/lintian/overrides/

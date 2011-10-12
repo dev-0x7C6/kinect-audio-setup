@@ -1,0 +1,36 @@
+.\"                                      Hey, EMACS: -*- nroff -*-
+.\" First parameter, NAME, should be all caps
+.\" Second parameter, SECTION, should be 1-8, maybe w/ subsection
+.\" other parameters are allowed: see man(7), man(1)
+.TH KINECT_FETCH_FW 8 "September 11, 2011"
+.\" Please adjust this date whenever revising the manpage.
+.\"
+.\" Some roff macros, for reference:
+.\" .nh        disable hyphenation
+.\" .hy        enable hyphenation
+.\" .ad l      left justify
+.\" .ad b      justify to both left and right margins
+.\" .nf        disable filling
+.\" .fi        enable filling
+.\" .br        insert line break
+.\" .sp <n>    insert n+1 empty lines
+.\" for manpage-specific macros, see man(7)
+.SH NAME
+kinect_fetch_fw \- download the Usb Audio Class firmware for the Kinect
+.SH SYNOPSIS
+.B kinect_fetch_fw <firmware destdir> [<path of kinect_upload_fw binary>]
+.SH DESCRIPTION
+.\" TeX users may be more comfortable with the \fB<whatever>\fP and
+.\" \fI<whatever>\fP escape sequences to invode bold face and italics,
+.\" respectively.
+\fBkinect_fetch_fw\fP is a program to download the Usb Audio Class device 
+firmware for the Microsoft Kinect, and to set up udev rules enabling 
+\fBkinect_upload_fw\fP to be called automatically when the device is detected.
+.SH SEE ALSO
+.BR kinect_upload_fw (8)
+.br
+.SH AUTHOR
+kinect_fetch_fw was written by Antonio Ospite <ospite@studenti.unina.it>.
+.PP
+This manual page was written by Antonio Ospite <ospite@studenti.unina.it>,
+for the Debian project (and may be used by others).
