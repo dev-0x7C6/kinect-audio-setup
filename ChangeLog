@@ -1,0 +1,99 @@
+2011-10-06 14:49:01 +0200  Antonio Ospite  <ospite@studenti.unina.it>
+
+	* kinect_upload_fw: fix a couple of minor warnings from 'sparse' (v0.1)
+
+2011-10-03 16:22:36 +0200  Antonio Ospite  <ospite@studenti.unina.it>
+
+	* kinect_upload_fw: support architectures that are not little-endian
+
+2011-10-03 15:55:28 +0200  Antonio Ospite  <ospite@studenti.unina.it>
+
+	* kinect_fetch_fw: add a mechanism to check the integrity of the downloaded file
+
+2011-10-03 15:47:53 +0200  Antonio Ospite  <ospite@studenti.unina.it>
+
+	* kinect_fetch_fw: print error messages on stderr
+
+2011-09-30 23:00:42 +0200  Antonio Ospite  <ospite@studenti.unina.it>
+
+	* kinect_upload_fw: really fix -Wformat warnings about sizeof()
+
+2011-09-30 13:59:17 +0200  Antonio Ospite  <ospite@studenti.unina.it>
+
+	* kinect_upload_fw: fix issues shown by valgrind --leak-check=full --show-reachable=yes
+
+2011-09-30 13:43:52 +0200  Antonio Ospite  <ospite@studenti.unina.it>
+
+	* kinect_upload_fw: cosmetic changes
+
+2011-09-30 13:38:42 +0200  Antonio Ospite  <ospite@studenti.unina.it>
+
+	* kinect_upload_fw: print more meaningful error message on failure
+
+2011-09-30 13:26:48 +0200  Antonio Ospite  <ospite@studenti.unina.it>
+
+	* kinect_fetch_fw: return value from $() does not need to be quoted
+
+2011-09-30 13:21:06 +0200  Antonio Ospite  <ospite@studenti.unina.it>
+
+	* kinect_fetch_fw: make FW_DESTDIR an absolute path
+
+2011-09-30 12:54:46 +0200  Antonio Ospite  <ospite@studenti.unina.it>
+
+	* Change description of kinect_fetch_fw
+
+2011-09-30 11:31:01 +0200  Antonio Ospite  <ospite@studenti.unina.it>
+
+	* Add more info in the README file
+
+2011-09-29 23:20:26 +0200  Antonio Ospite  <ospite@studenti.unina.it>
+
+	* kinect_upload_fw: fix a -Wstrict-aliasing warning
+
+2011-09-29 23:13:09 +0200  Antonio Ospite  <ospite@studenti.unina.it>
+
+	* kinect_upload_fw: fix assigning a string literal to a 'char *'
+
+2011-09-29 23:11:21 +0200  Antonio Ospite  <ospite@studenti.unina.it>
+
+	* kinect_upload_fw: fix -Wsign-compare and -Wpointer-sign
+
+2011-09-29 23:09:48 +0200  Antonio Ospite  <ospite@studenti.unina.it>
+
+	* kinect_upload_fw: fix -Wformat warnings
+
+2011-09-29 23:05:58 +0200  Antonio Ospite  <ospite@studenti.unina.it>
+
+	* kinect_upload_fw: fix -Wmissing-prototypes warning
+
+2011-09-29 23:04:24 +0200  Antonio Ospite  <ospite@studenti.unina.it>
+
+	* kinect_upload_fw: fix -Wold-style-definition warnings
+
+2011-09-29 22:06:26 +0200  Antonio Ospite  <ospite@studenti.unina.it>
+
+	* kinect_upload_fw: fix spacing in Makefile, use simple expansion to set bindir
+
+2011-09-29 22:05:35 +0200  Antonio Ospite  <ospite@studenti.unina.it>
+
+	* kinect_upload_fw: enable more warnings in Makefile
+
+2011-09-17 21:46:55 +0200  Antonio Ospite  <ospite@studenti.unina.it>
+
+	* kinect_upload_fw: remove some trailing spaces
+
+2011-09-29 18:19:23 +0200  Antonio Ospite  <ospite@studenti.unina.it>
+
+	* Makefile: Add a rule to generate a GNU style Changelog
+
+2011-09-12 00:49:16 +0200  Antonio Ospite  <ospite@studenti.unina.it>
+
+	* Add a .gitignore file
+
+2011-09-11 20:42:39 +0200  Antonio Ospite  <ospite@studenti.unina.it>
+
+	* Initial import of the other pieces of knect_audio_setup
+
+2011-09-11 20:35:19 +0200  Drew Fisher  <drew.m.fisher@gmail.com>
+
+	* Initial import of kinect_upload_fw
