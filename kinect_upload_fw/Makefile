@@ -48,7 +48,9 @@ endian.h: endian
 	rm -f endian.h
 	./endian > endian.h
 
-kinect_upload_fw: endian.h kinect_upload_fw.o
+kinect_upload_fw.o: endian.h
+
+kinect_upload_fw: kinect_upload_fw.o
 
 
 install: kinect_upload_fw
