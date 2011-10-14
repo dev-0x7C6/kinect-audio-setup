@@ -182,7 +182,11 @@ int main(int argc, char** argv) {
 	res = get_reply(); // I'm not sure why we do this twice here, but maybe it'll make sense later.
 	seq++;
 
-	uint32_t addr = 0x00080000;
+	// Split addr declaration and assignment in order to compile as C++,
+	// otherwise this would give "jump to label '...' crosses initialization"
+	// errors.
+	uint32_t addr;
+	addr = 0x00080000;
 	unsigned char page[0x4000];
 	int read;
 	do {
