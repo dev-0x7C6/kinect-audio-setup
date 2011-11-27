@@ -38,3 +38,8 @@ Then run the firmware fetcher script (remember this is only needed
 once):
 
   # ./kinect_fetch_fw /lib/firmware/kinect
+
+
+The UAC firmware is downloaded from the Microsoft Kinect SDK at
+http://www.kinectforwindows.org, the license of the SDK can be found at
+http://www.kinectforwindows.org/download/EULA.htm
