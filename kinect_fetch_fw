@@ -40,7 +40,9 @@ then
   exit 1
 fi
 
-7z e -y -r "$ARCHIVE_NAME" "UACFirmware.*"
+echo -n "Extracting the UAC firmware..."
+7z e -y -r "$ARCHIVE_NAME" "UACFirmware.*" > /dev/null
+echo " done."
 
 FW_FILE=$(ls UACFirmware.* | cut -d ' ' -f 1)
 
