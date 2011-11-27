@@ -1,4 +1,7 @@
 kinect_upload_fw/kinect_upload_fw
-kinect_upload_fw/*.o
+kinect_upload_fw/endian
+kinect_upload_fw/endian.h
+*.exe
+*.o
 *~
 *.swp

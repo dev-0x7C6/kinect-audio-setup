@@ -139,7 +139,7 @@ int main(int argc, char** argv) {
 		filename = argv[1];
 	}
 
-	FILE* fw = fopen(filename, "r");
+	FILE* fw = fopen(filename, "rb");
 	if (fw == NULL) {
 		fprintf(stderr, "Failed to open %s: %s\n", filename, strerror(errno));
 		return errno;
@@ -182,7 +182,11 @@ int main(int argc, char** argv) {
 	res = get_reply(); // I'm not sure why we do this twice here, but maybe it'll make sense later.
 	seq++;
 
-	uint32_t addr = 0x00080000;
+	// Split addr declaration and assignment in order to compile as C++,
+	// otherwise this would give "jump to label '...' crosses initialization"
+	// errors.
+	uint32_t addr;
+	addr = 0x00080000;
 	unsigned char page[0x4000];
 	int read;
 	do {

@@ -1,9 +1,9 @@
 kinect-audio-setup makes audio input from the Microsoft Kinect Sensor
-device work on GNU/linux systems.
+device work on GNU/Linux systems.
 
 When the Kinect is first plugged in the USB port it shows up as a
 generic USB device with a bulk endpoint; after uploading a certain
-firmware a reenumeration takes place and a USB Audio Class device
+firmware a reenumeration takes place and a USB Audio Class (UAC) device
 becomes available.
 
 kinect-audio-setup provides tools to download the firmware off the net
@@ -31,7 +31,15 @@ Install kinect_upload_fw first:
 
   # make install
 
+it will be copied to /usr/local/sbin by default, assign the PREFIX
+variable on the command line to install it to another location.
+
 Then run the firmware fetcher script (remember this is only needed
 once):
 
   # ./kinect_fetch_fw /lib/firmware/kinect
+
+
+The UAC firmware is downloaded from the Microsoft Kinect SDK at
+http://www.kinectforwindows.org, the license of the SDK can be found at
+http://www.kinectforwindows.org/download/EULA.htm
