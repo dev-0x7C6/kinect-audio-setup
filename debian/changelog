@@ -1,3 +1,22 @@
+kinect-audio-setup (0.2-1) unstable; urgency=low
+
+  * [bb49f29] kinect_upload_fw: disable some compiler flags
+  * [061cb66] kinect_upload_fw: fix generating endian.h before compiling kinect_upload_fw
+  * [d377579] kinect_upload_fw: fix a mingw32 compilation error
+  * [15a7d9a] kinect_upload_fw: fix reading the firmware file on Windows
+  * [e1bc8be] Update .gitignore
+  * [54b0fdd] Add info about building kinect_upload_fw for MS Windows
+  * [863d1b3] kinect_upload_fw: specify libraries after objects in the linking command
+  * [f277611] kinect_fetch_fw: mention wget in the internal documentation
+  * [8184ae6] kinect_fetch_fw: download the latest KinectSDK-v1.0-beta2-x86.msi
+  * [c8bf462] kinect_fetch_fw: make the script less verbose when invoking 7z
+  * [73ef2c4] README: fix a typo and add some clarifications
+  * [aaf68f5] README: tell where we are getting the actual firmware from
+  * [24c4089] kinect_fetch_fw: tell where we are getting the firmware from
+  * [41a7237] Add ChangeLog for v0.2
+
+ -- Antonio Ospite <ospite@studenti.unina.it>  Sun, 27 Nov 2011 12:32:01 +0100
+
 kinect-audio-setup (0.1-1) unstable; urgency=low
 
   * Initial release (Closes: #645072)
