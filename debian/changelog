@@ -16,8 +16,11 @@ kinect-audio-setup (0.2-1) unstable; urgency=low
   * [aaf68f5] README: tell where we are getting the actual firmware from
   * [24c4089] kinect_fetch_fw: tell where we are getting the firmware from
   * [41a7237] Add ChangeLog for v0.2
+  * [7983d17] debian: import upstream version v0.2
+  * [c4496ae] debian: fix debian-changelog-line-too-long lintian warnings
+  * [a9c382f] debian/control: tell where the UAC firmare if downloaded from
 
- -- Antonio Ospite <ospite@studenti.unina.it>  Sun, 27 Nov 2011 12:36:20 +0100
+ -- Antonio Ospite <ospite@studenti.unina.it>  Sun, 27 Nov 2011 13:30:53 +0100
 
 kinect-audio-setup (0.1-1) unstable; urgency=low
 
