@@ -12,6 +12,9 @@
 #
 # wget and 7z from p7zip-full are needed, they can be installed with
 #   sudo aptitude install wget p7zip-full
+#
+# NOTE: p7zip-full >= 9.20 is required in order to extract .msi files
+#       correctly
 
 set -e
 
