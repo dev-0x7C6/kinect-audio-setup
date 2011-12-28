@@ -2,7 +2,7 @@ Source: kinect-audio-setup
 Section: contrib/sound
 Priority: extra
 Maintainer: Antonio Ospite <ospite@studenti.unina.it>
-Build-Depends: debhelper (>= 8.0.0), libusb-1.0-0-dev, pkg-config
+Build-Depends: debhelper (>= 8.0.0), po-debconf, libusb-1.0-0-dev, pkg-config
 Standards-Version: 3.9.2
 Homepage: http://git.ao2.it/kinect-audio-setup.git/
 Vcs-Git: git://git.ao2.it/kinect-audio-setup.git
@@ -10,7 +10,7 @@ Vcs-Browser: http://git.ao2.it/kinect-audio-setup.git/
 
 Package: kinect-audio-setup
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, udev, wget, p7zip-full (>= 9.20)
+Depends: ${shlibs:Depends}, ${misc:Depends}, debconf, udev, wget, p7zip-full (>= 9.20)
 Description: enable audio input from the Microsoft Kinect sensor device
  When the Kinect is first plugged in the USB port it shows up as a
  generic USB device with a bulk endpoint; after uploading a certain

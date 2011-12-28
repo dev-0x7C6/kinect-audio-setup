@@ -4,11 +4,19 @@
 # see: dh_installdeb(1)
 
 set -e
+        
+. /usr/share/debconf/confmodule 
 
 case "$1" in
     configure)
-        kinect_fetch_fw /lib/firmware/kinect /usr/sbin/kinect_upload_fw || true
-        udevadm control --reload-rules || true
+        db_get kinect-audio-setup/accept_eula
+        if [ "$RET" = "false" ]; then
+            db_input high kinect-audio-setup/eula_not_accepted || true
+            db_go
+        else
+          kinect_fetch_fw /lib/firmware/kinect /usr/sbin/kinect_upload_fw 1>&2 || true
+          udevadm control --reload-rules || true
+        fi
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)

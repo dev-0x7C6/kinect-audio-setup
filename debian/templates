@@ -1,0 +1,17 @@
+Template: kinect-audio-setup/accept_eula
+Type: boolean
+Default: false
+_Description: Do you accept the Microsoft KinectForWindows EULA?
+ In order to fetch the binary firmware needed by this package you need
+ to agree to the EULA of the Microsoft KinectForWindows SDK:
+ .
+ http://www.kinectforwindows.org/download/EULA.htm
+
+Template: kinect-audio-setup/eula_not_accepted
+Type: note
+_Description: EULA not accepted
+ You need to accept the EULA of Microsoft KinectForWindows SDK in order
+ to fetch the binary firmware needed by this package.
+ .
+ You can do this later by calling:
+   dpkg-reconfigure kinect-audio-setup

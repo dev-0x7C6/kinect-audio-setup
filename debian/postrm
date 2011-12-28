@@ -10,6 +10,12 @@ case "$1" in
         rm -rf /lib/firmware/kinect
         # Because piuparts complains about /lib/firmware still there
         rmdir --ignore-fail-on-non-empty -p /lib/firmware/
+
+        if [ -e /usr/share/debconf/confmodule ];
+        then
+            . /usr/share/debconf/confmodule
+            db_purge
+        fi
     ;;
 
     remove|upgrade|failed-upgrade|abort-upgrade|abort-install)
