@@ -10,7 +10,7 @@ Vcs-Browser: http://git.ao2.it/kinect-audio-setup.git/
 
 Package: kinect-audio-setup
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, udev, wget, p7zip-full
+Depends: ${shlibs:Depends}, ${misc:Depends}, udev, wget, p7zip-full (>= 9.20)
 Description: enable audio input from the Microsoft Kinect sensor device
  When the Kinect is first plugged in the USB port it shows up as a
  generic USB device with a bulk endpoint; after uploading a certain
