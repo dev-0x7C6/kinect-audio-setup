@@ -1,8 +1,9 @@
 kinect-audio-setup (0.2-2) unstable; urgency=low
 
   * [a3661fb] debian: depend on p7zip-full >= 9.20
+  * [cb6e177] debian: use debconf to ask if the user accepts the MSK4W EULA
 
- -- Antonio Ospite <ospite@studenti.unina.it>  Wed, 28 Dec 2011 12:28:35 +0100
+ -- Antonio Ospite <ospite@studenti.unina.it>  Fri, 03 Feb 2012 13:02:26 +0100
 
 kinect-audio-setup (0.2-1) unstable; urgency=low
 
