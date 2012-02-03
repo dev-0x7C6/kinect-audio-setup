@@ -44,3 +44,9 @@ once):
 The UAC firmware is downloaded from the Microsoft Kinect SDK at
 http://www.kinectforwindows.org, the license of the SDK can be found at
 http://www.kinectforwindows.org/download/EULA.htm
+
+=== Acknowledgements
+
+A special thanks goes to Steven Toth from http://kernellabs.com, who
+kindly sponsored a Kinect to Antonio Ospite and made kinect-audio-setup
+possible in its current form.
