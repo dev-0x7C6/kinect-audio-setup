@@ -10,8 +10,10 @@ kinect-audio-setup (0.2-3) unstable; urgency=low
   * debian/watch: add a watch file
   * debian/rules: remove some unneeded comments
   * debian/control: fix short and long descriptions
+  * debian/po/templates.pot: fill in some info in the header
+  * debian/po/it.po: add Italian translation for the debconf dialogs
 
- -- Antonio Ospite <ospite@studenti.unina.it>  Tue, 19 Nov 2013 16:17:16 +0100
+ -- Antonio Ospite <ospite@studenti.unina.it>  Tue, 19 Nov 2013 17:49:54 +0100
 
 kinect-audio-setup (0.2-2) unstable; urgency=low
 
