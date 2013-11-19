@@ -1,0 +1,65 @@
+# Italian (Italy) kinect-audio-setup debconf translation
+# Copyright (C) 2013  Antonio Ospite <ospite@studenti.unina.it>
+# This file is distributed under the same license as the kinect-audio-setup package.
+# Antonio Ospite <ospite@studenti.unina.it>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kinect-audio-setup\n"
+"Report-Msgid-Bugs-To: kinect-audio-setup@packages.debian.org\n"
+"POT-Creation-Date: 2012-02-03 11:51+0100\n"
+"PO-Revision-Date: 2013-11-19 17:31+0100\n"
+"Last-Translator: Antonio Ospite <ospite@studenti.unina.it>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: boolean
+#. Description
+#: ../templates:1001
+msgid "Do you accept the Microsoft KinectForWindows EULA?"
+msgstr "Accetti la EULA di Microsoft KinectForWindows?"
+
+#. Type: boolean
+#. Description
+#: ../templates:1001
+msgid ""
+"In order to fetch the binary firmware needed by this package you need to "
+"agree to the EULA of the Microsoft KinectForWindows SDK:"
+msgstr ""
+"Per poter scaricare il firmware binario richiesto da questo pacchetto devi "
+"accettare la EULA dell'SDK Microsoft KinectForWindows:"
+
+#. Type: boolean
+#. Description
+#: ../templates:1001
+msgid "http://www.kinectforwindows.org/download/EULA.htm"
+msgstr "http://www.kinectforwindows.org/download/EULA.htm"
+
+#. Type: note
+#. Description
+#: ../templates:2001
+msgid "EULA not accepted"
+msgstr "EULA non accettata"
+
+#. Type: note
+#. Description
+#: ../templates:2001
+msgid ""
+"You need to accept the EULA of Microsoft KinectForWindows SDK in order to "
+"fetch the binary firmware needed by this package."
+msgstr ""
+"Devi accettare la EULA dell'SDK Microsoft KinectForWindows per poter "
+"scaricare il firmware binario richiesto da questo pacchetto."
+
+#. Type: note
+#. Description
+#: ../templates:2001
+msgid ""
+"You can do this later by calling:\n"
+"  dpkg-reconfigure kinect-audio-setup"
+msgstr ""
+"Puoi fare ciò in seguito eseguendo:\n"
+"  dpkg-reconfigure kinect-audio-setup"
