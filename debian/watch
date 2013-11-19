@@ -1,0 +1,5 @@
+version=3
+
+opts=downloadurlmangle=s/shortlog\/refs\/tags\/(v[\d\.]+)/snapshot\/$1.tar.gz/,\
+filenamemangle=s/.*v([\d\.]+)$/kinect-audio-setup-$1.tar.gz/ \
+  http://git.ao2.it/kinect-audio-setup.git/tags  ^.*v([\d\.]+)
