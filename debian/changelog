@@ -1,3 +1,18 @@
+kinect-audio-setup (0.2-3) unstable; urgency=low
+
+  * debian/kinect-audio-setup.lintian-overrides: move from debian/lintian
+  * debian/install: drop debian/lintian/kinect-audio-setup
+  * debian/control: switch to debhelper >= 9
+  * debian/gbp.conf: explicitly disable pristine-tar
+  * debian/control: specify the debian package branch in Vcs-Git
+  * debian/control: bump Standards-Version to 3.9.5
+  * debian/copyright: update to Copyright-Format 1.0
+  * debian/watch: add a watch file
+  * debian/rules: remove some unneeded comments
+  * debian/control: fix short and long descriptions
+
+ -- Antonio Ospite <ospite@studenti.unina.it>  Tue, 19 Nov 2013 16:17:16 +0100
+
 kinect-audio-setup (0.2-2) unstable; urgency=low
 
   * [a3661fb] debian: depend on p7zip-full >= 9.20
