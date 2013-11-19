@@ -3,7 +3,7 @@ Section: contrib/sound
 Priority: extra
 Maintainer: Antonio Ospite <ospite@studenti.unina.it>
 Build-Depends: debhelper (>= 9), po-debconf, libusb-1.0-0-dev, pkg-config
-Standards-Version: 3.9.2
+Standards-Version: 3.9.5
 Homepage: http://git.ao2.it/kinect-audio-setup.git/
 Vcs-Git: git://git.ao2.it/kinect-audio-setup.git -b debian
 Vcs-Browser: http://git.ao2.it/kinect-audio-setup.git/
