@@ -1,5 +1,0 @@
-# lib/firmware/kinect/ is indeed empty at package installation time, but this
-# is on purpose: the upstream Makefile creates the dir as a placeholder, and
-# then the kinect_fetch_fw script will copy the actual firmware there after
-# the user accepted the Microsoft EULA.
-kinect-audio-setup: package-contains-empty-directory lib/firmware/kinect/
