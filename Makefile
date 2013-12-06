@@ -6,7 +6,7 @@ install:
 	install -d $(DESTDIR)/lib/udev/rules.d
 	install -m 644 contrib/55-kinect_audio.rules.in $(DESTDIR)/lib/udev/rules.d/55-kinect_audio.rules
 
-clean: 
+clean:
 	$(MAKE) -C kinect_upload_fw clean
 
 changelog:
