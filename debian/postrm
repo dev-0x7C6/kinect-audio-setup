@@ -8,8 +8,6 @@ set -e
 case "$1" in
     purge)
         rm -rf /lib/firmware/kinect
-        # Because piuparts complains about /lib/firmware still there
-        rmdir --ignore-fail-on-non-empty -p /lib/firmware/
 
         if [ -e /usr/share/debconf/confmodule ];
         then
