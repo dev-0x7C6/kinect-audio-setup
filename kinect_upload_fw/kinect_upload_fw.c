@@ -77,7 +77,7 @@ static void dump_bl_cmd(bootloader_command cmd) {
 static int get_first_reply(void) {
 	unsigned char buffer[512];
 	int res;
-	int transferred;
+	int transferred = 0;
 	res = libusb_bulk_transfer(dev, 0x81, buffer, 512, &transferred, 0);
 	if (res != 0 ) {
 		LOG("Error reading first reply: %d\ttransferred: %d (expected %d)\n", res, transferred, 0x60);
@@ -101,7 +101,7 @@ static int get_reply(void) {
 		unsigned char dump[512];
 	} reply;
 	int res;
-	int transferred;
+	int transferred = 0;
 
 	res = libusb_bulk_transfer(dev, 0x81, reply.dump, 512, &transferred, 0);
 	if (res != 0 || transferred != sizeof(status_code)) {
@@ -171,7 +171,7 @@ int main(int argc, char** argv) {
 	LOG("About to send: ");
 	dump_bl_cmd(cmd);
 
-	int transferred;
+	int transferred = 0;
 
 	res = libusb_bulk_transfer(dev, 1, (unsigned char*)&cmd, sizeof(cmd), &transferred, 0);
 	if (res != 0 || transferred != sizeof(cmd)) {
@@ -202,6 +202,7 @@ int main(int argc, char** argv) {
 		LOG("About to send: ");
 		dump_bl_cmd(cmd);
 		// Send it off!
+		transferred = 0;
 		res = libusb_bulk_transfer(dev, 1, (unsigned char*)&cmd, sizeof(cmd), &transferred, 0);
 		if (res != 0 || transferred != sizeof(cmd)) {
 			LOG("Error: res: %d\ttransferred: %d (expected %zu)\n", res, transferred, sizeof(cmd));
@@ -210,6 +211,7 @@ int main(int argc, char** argv) {
 		int bytes_sent = 0;
 		while (bytes_sent < read) {
 			int to_send = (read - bytes_sent > 512 ? 512 : read - bytes_sent);
+			transferred = 0;
 			res = libusb_bulk_transfer(dev, 1, &page[bytes_sent], to_send, &transferred, 0);
 			if (res != 0 || transferred != to_send) {
 				LOG("Error: res: %d\ttransferred: %d (expected %d)\n", res, transferred, to_send);
@@ -228,6 +230,7 @@ int main(int argc, char** argv) {
 	cmd.cmd = fn_le32(0x04);
 	cmd.write_addr = fn_le32(0x00080030);
 	dump_bl_cmd(cmd);
+	transferred = 0;
 	res = libusb_bulk_transfer(dev, 1, (unsigned char*)&cmd, sizeof(cmd), &transferred, 0);
 	if (res != 0 || transferred != sizeof(cmd)) {
 		LOG("Error: res: %d\ttransferred: %d (expected %zu)\n", res, transferred, sizeof(cmd));
