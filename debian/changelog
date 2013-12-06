@@ -1,3 +1,10 @@
+kinect-audio-setup (0.3-1) unstable; urgency=medium
+
+  * debian: remove kinect-audio-setup.lintian-overrides
+  * debian/postrm: do not try to remove /lib/firmware/
+
+ -- Antonio Ospite <ospite@studenti.unina.it>  Fri, 06 Dec 2013 18:02:43 +0100
+
 kinect-audio-setup (0.2-3) unstable; urgency=low
 
   * debian/kinect-audio-setup.lintian-overrides: move from debian/lintian
