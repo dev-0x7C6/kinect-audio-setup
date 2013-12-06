@@ -1,6 +1,54 @@
+2013-12-06 17:46:39 +0100  Antonio Ospite  <ospite@studenti.unina.it>
+
+	* ChangeLog: refresh for v0.3 (HEAD, tag: v0.3, master)
+
+2013-12-06 17:45:36 +0100  Antonio Ospite  <ospite@studenti.unina.it>
+
+	* Makefile: remove a trailing space
+
+2013-12-06 17:43:22 +0100  Antonio Ospite  <ospite@studenti.unina.it>
+
+	* Makefile: don't create the empty dir /lib/firmware/kinect
+
+2013-12-06 17:42:43 +0100  Antonio Ospite  <ospite@studenti.unina.it>
+
+	* kinect_upload_fw/Makefile: fix double spacing
+
+2013-12-06 17:36:12 +0100  Antonio Ospite  <ospite@studenti.unina.it>
+
+	* kinect_upload_fw/endian.c: fix warning and rename a function
+
+2013-11-19 16:16:18 +0100  Antonio Ospite  <ospite@studenti.unina.it>
+
+	* README: reword and re-indent some paragraphs (origin/master, origin/HEAD)
+
+2013-11-19 16:02:39 +0100  Antonio Ospite  <ospite@studenti.unina.it>
+
+	* Makefile: misc fixes
+
+2012-02-23 22:48:22 +0100  Antonio Ospite  <ospite@studenti.unina.it>
+
+	* kinect_upload_fw: initialize 'transferred' before USB transfers
+
+2012-02-03 13:12:01 +0100  Antonio Ospite  <ospite@studenti.unina.it>
+
+	* README: acknowledge Steven Toth's sponsorship
+
+2011-12-28 12:17:52 +0100  Antonio Ospite  <ospite@studenti.unina.it>
+
+	* kinect_fetch_fw: mention that p7zip-full >= 9.20 is needed
+
+2011-12-28 12:14:06 +0100  Antonio Ospite  <ospite@studenti.unina.it>
+
+	* README: mention reloading udev rules
+
+2011-11-27 12:16:20 +0100  Antonio Ospite  <ospite@studenti.unina.it>
+
+	* Add ChangeLog for v0.2 (tag: v0.2)
+
 2011-11-27 10:23:30 +0100  Antonio Ospite  <ospite@studenti.unina.it>
 
-	* kinect_fetch_fw: tell where we are getting the firmware from (HEAD, origin/master, origin/HEAD, master)
+	* kinect_fetch_fw: tell where we are getting the firmware from
 
 2011-11-27 10:11:51 +0100  Antonio Ospite  <ospite@studenti.unina.it>
 
@@ -52,7 +100,7 @@
 
 2011-10-12 12:13:34 +0200  Antonio Ospite  <ospite@studenti.unina.it>
 
-	* Add ChangeLog for v0.1 (v0.1)
+	* Add ChangeLog for v0.1 (tag: v0.1)
 
 2011-10-06 14:49:01 +0200  Antonio Ospite  <ospite@studenti.unina.it>
 
