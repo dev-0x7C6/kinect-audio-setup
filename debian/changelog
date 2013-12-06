@@ -3,8 +3,9 @@ kinect-audio-setup (0.3-1) unstable; urgency=medium
   * debian: remove kinect-audio-setup.lintian-overrides
   * debian/postrm: do not try to remove /lib/firmware/
   * debian/control: reformatting done by cme
+  * debian/copyright: update copyright years for the package files
 
- -- Antonio Ospite <ospite@studenti.unina.it>  Fri, 06 Dec 2013 22:26:20 +0100
+ -- Antonio Ospite <ospite@studenti.unina.it>  Fri, 06 Dec 2013 23:29:42 +0100
 
 kinect-audio-setup (0.2-3) unstable; urgency=low
 
