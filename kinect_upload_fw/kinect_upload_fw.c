@@ -155,8 +155,18 @@ int main(int argc, char** argv) {
 		goto fail_libusb_open;
 	}
 
-	libusb_set_configuration(dev, 1);
+	int current_configuration = 0;
+	libusb_get_configuration(dev, &current_configuration);
+	if (current_configuration != 1)
+		libusb_set_configuration(dev, 1);
+
 	libusb_claim_interface(dev, 0);
+
+	libusb_get_configuration(dev, &current_configuration);
+	if (current_configuration != 1) {
+		res = -ENODEV;
+		goto cleanup;
+	}
 
 	seq = 1;
 
