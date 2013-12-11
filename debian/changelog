@@ -1,3 +1,9 @@
+kinect-audio-setup (0.3-2) UNRELEASED; urgency=medium
+
+  * debian/patches: add a patch to make kinect_upload_fw work with more devices
+
+ -- Antonio Ospite <ospite@studenti.unina.it>  Wed, 11 Dec 2013 12:42:48 +0100
+
 kinect-audio-setup (0.3-1) unstable; urgency=medium
 
   * debian: remove kinect-audio-setup.lintian-overrides
