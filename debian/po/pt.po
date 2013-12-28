@@ -1,4 +1,4 @@
-# Translalion of kinect-audio-setup's debconf messages to european portuguese
+# Translation of kinect-audio-setup's debconf messages to european portuguese
 #
 # Copyright (C) 2013  Antonio Ospite <ospite@studenti.unina.it>
 # This file is distributed under the same license as the kinect-audio-setup package.
