@@ -20,17 +20,18 @@ Depends: ${shlibs:Depends},
          udev,
          wget,
          p7zip-full (>= 9.20)
-Description: helpers to setup audio input from the Microsoft Kinect sensor
- When the Kinect is first plugged in the USB port it shows up as
- a generic USB device with a bulk endpoint; after uploading a certain
- firmware a reenumeration takes place and a USB Audio Class device
- becomes available.
+Description: Microsoft Kinect sensor audio setup helpers
+ When the Kinect sensor is first plugged in, its audio input device shows
+ up as a generic USB device; after the appropriate firmware is loaded, the
+ device is reset and it becomes available as a USB Audio Class (UAC)
+ device.
  .
- kinect-audio-setup provides tools to download the firmware off the net
- at installation time —since the firmware is not redistributable—, and
- it sets up udev rules to call the firmware loader when the device is
- plugged in to finally get the USB Audio Class device.
+ Since the firmware is not redistributable, kinect-audio-setup provides
+ tools to download it from the Internet at installation time, and sets up
+ udev rules to call the firmware loader when the device is plugged in to
+ finally get the UAC device.
  .
- The UAC firmware is downloaded from the Microsoft Kinect SDK at
- http://www.kinectforwindows.org, the license of the SDK can be found at
- http://www.kinectforwindows.org/download/EULA.htm
+ The UAC firmware is downloaded from the Microsoft Kinect Software
+ Development Kit at http://www.microsoft.com/en-us/kinectforwindows/, the
+ license of which can be found at
+ http://www.microsoft.com/en-us/kinectforwindows/develop/sdk-eula.aspx

@@ -1,17 +1,28 @@
+# These templates have been reviewed by the debian-l10n-english
+# team
+#
+# If modifications/additions/rewording are needed, please ask
+# debian-l10n-english@lists.debian.org for advice.
+#
+# Even minor modifications require translation updates and such
+# changes should be coordinated with translators and reviewers.
+
 Template: kinect-audio-setup/accept_eula
 Type: boolean
 Default: false
-_Description: Do you accept the Microsoft KinectForWindows EULA?
- In order to fetch the binary firmware needed by this package you need
- to agree to the EULA of the Microsoft KinectForWindows SDK:
+#flag:translate!:3
+_Description: Do you accept the Microsoft Kinect for Windows EULA?
+ In order to fetch the binary firmware needed by the kinect-audio-setup
+ package, you need to agree to the End User License Agreement (EULA) of
+ the Microsoft Kinect for Windows Software Development Kit:
  .
- http://www.kinectforwindows.org/download/EULA.htm
+ http://www.microsoft.com/en-us/kinectforwindows/develop/sdk-eula.aspx
 
 Template: kinect-audio-setup/eula_not_accepted
-Type: note
+Type: error
 _Description: EULA not accepted
- You need to accept the EULA of Microsoft KinectForWindows SDK in order
- to fetch the binary firmware needed by this package.
+ You need to accept the End User License Agreement (EULA) of the
+ Microsoft Kinect for Windows Software Development Kit in order
+ to fetch the binary firmware needed by the kinect-audio-setup package.
  .
- You can do this later by calling:
-   dpkg-reconfigure kinect-audio-setup
+ You can do this later with "dpkg-reconfigure kinect-audio-setup".
