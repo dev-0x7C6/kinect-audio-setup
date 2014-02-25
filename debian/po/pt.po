@@ -1,15 +1,15 @@
-# Translation of kinect-audio-setup's debconf messages to european portuguese
+# Translalion of kinect-audio-setup's debconf messages to european portuguese
 #
 # Copyright (C) 2013  Antonio Ospite <ospite@studenti.unina.it>
 # This file is distributed under the same license as the kinect-audio-setup package.
 #
-# Américo Monteiro <a_monteiro@gmx.com>, 2013.
+# Américo Monteiro <a_monteiro@gmx.com>, 2013, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: kinect-audio-setup\n"
 "Report-Msgid-Bugs-To: kinect-audio-setup@packages.debian.org\n"
-"POT-Creation-Date: 2012-02-03 11:51+0100\n"
-"PO-Revision-Date: 2013-12-27 20:34+0000\n"
+"POT-Creation-Date: 2014-02-17 18:39+0100\n"
+"PO-Revision-Date: 2014-02-18 22:18+0000\n"
 "Last-Translator: Américo Monteiro <a_monteiro@gmx.com>\n"
 "Language-Team: Portuguese <traduz@debianpt.org>\n"
 "Language: pt\n"
@@ -21,50 +21,57 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:1001
-msgid "Do you accept the Microsoft KinectForWindows EULA?"
-msgstr "Aceita a EULA KinectForWindows da Microsoft?"
+#: ../templates:2001
+#| msgid "Do you accept the Microsoft KinectForWindows EULA?"
+msgid "Do you accept the Microsoft Kinect for Windows EULA?"
+msgstr "Aceita a EULA Kinect para Windows da Microsoft?"
 
 #. Type: boolean
-#. Description
-#: ../templates:1001
-msgid ""
-"In order to fetch the binary firmware needed by this package you need to "
-"agree to the EULA of the Microsoft KinectForWindows SDK:"
-msgstr ""
-"De modo a buscar o firmware binário necessário por este pacote, você "
-"precisa de concordar com a EULA KinectForWindows SDK da Microsoft:"
-
-#. Type: boolean
-#. Description
-#: ../templates:1001
-msgid "http://www.kinectforwindows.org/download/EULA.htm"
-msgstr "http://www.kinectforwindows.org/download/EULA.htm"
-
-#. Type: note
 #. Description
 #: ../templates:2001
+#| msgid ""
+#| "In order to fetch the binary firmware needed by this package you need to "
+#| "agree to the EULA of the Microsoft KinectForWindows SDK:"
+msgid ""
+"In order to fetch the binary firmware needed by the kinect-audio-setup "
+"package, you need to agree to the End User License Agreement (EULA) of the "
+"Microsoft Kinect for Windows Software Development Kit:"
+msgstr ""
+"De modo a buscar o firmware binário necessário pelo pacote "
+"kinect-audio-setup, você precisa de concordar com a End User License "
+"Agreement (EULA) do Kinect para Windows Software Development Kit da "
+"Microsoft:"
+
+#. Type: error
+#. Description
+#: ../templates:3001
 msgid "EULA not accepted"
 msgstr "EULA não aceite"
 
-#. Type: note
+#. Type: error
 #. Description
-#: ../templates:2001
+#: ../templates:3001
+#| msgid ""
+#| "You need to accept the EULA of Microsoft KinectForWindows SDK in order to "
+#| "fetch the binary firmware needed by this package."
 msgid ""
-"You need to accept the EULA of Microsoft KinectForWindows SDK in order to "
-"fetch the binary firmware needed by this package."
+"You need to accept the End User License Agreement (EULA) of the Microsoft "
+"Kinect for Windows Software Development Kit in order to fetch the binary "
+"firmware needed by the kinect-audio-setup package."
 msgstr ""
-"Você precisa aceitar a EULA KinectForWindows SDK da Microsoft de modo "
-"a obter o firmware binário necessário por este pacote."
+"Você precisa aceitar a End User License Agreement (EULA) do Kinect para "
+"Windows Software Development Kit da Microsoft de modo a obter o firmware "
+"binário necessário pelo pacote kinect-audio-setup."
 
-#. Type: note
+#. Type: error
 #. Description
-#: ../templates:2001
-msgid ""
-"You can do this later by calling:\n"
-"  dpkg-reconfigure kinect-audio-setup"
+#: ../templates:3001
+#| msgid ""
+#| "You can do this later by calling:\n"
+#| "  dpkg-reconfigure kinect-audio-setup"
+msgid "You can do this later with \"dpkg-reconfigure kinect-audio-setup\"."
 msgstr ""
-"Você pode fazer isto mais tarde ao chamar:\n"
-"  dpkg-reconfigure kinect-audio-setup"
+"Você pode fazer isto mais tarde com \"dpkg-reconfigure kinect-audio-setup\"."
 
-
+#~ msgid "http://www.kinectforwindows.org/download/EULA.htm"
+#~ msgstr "http://www.kinectforwindows.org/download/EULA.htm"
