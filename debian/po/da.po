@@ -1,0 +1,60 @@
+# Danish translation kinect-audio-setup.
+# Copyright (c) 2014 kinect-audio-setup & nedenstående oversættere.
+# This file is distributed under the same license as the kinect-audio-setup package.
+# Joe Hansen <joedalton2@yahoo.dk>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kinect-audio-setup\n"
+"Report-Msgid-Bugs-To: kinect-audio-setup@packages.debian.org\n"
+"POT-Creation-Date: 2014-02-17 18:39+0100\n"
+"PO-Revision-Date: 2014-02-19 12:42+0000\n"
+"Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
+"Language-Team: Danish <debian-l10n-danish@lists.debian.org>\n"
+"Language: da\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: boolean
+#. Description
+#: ../templates:2001
+msgid "Do you accept the Microsoft Kinect for Windows EULA?"
+msgstr "Accepter du Microsoft Kinect for Windows EULA?"
+
+#. Type: boolean
+#. Description
+#: ../templates:2001
+msgid ""
+"In order to fetch the binary firmware needed by the kinect-audio-setup "
+"package, you need to agree to the End User License Agreement (EULA) of the "
+"Microsoft Kinect for Windows Software Development Kit:"
+msgstr ""
+"For at hente den binære firmware krævet af pakken kinect-audio-setup, "
+"så skal du acceptere End User License Agreement (EULA) for "
+"Microsoft Kinect for Windows Software Development Kit:"
+
+#. Type: error
+#. Description
+#: ../templates:3001
+msgid "EULA not accepted"
+msgstr "EULA er ikke accepteret"
+
+#. Type: error
+#. Description
+#: ../templates:3001
+msgid ""
+"You need to accept the End User License Agreement (EULA) of the Microsoft "
+"Kinect for Windows Software Development Kit in order to fetch the binary "
+"firmware needed by the kinect-audio-setup package."
+msgstr ""
+"Du skal acceptere End User License Agreement (EULA) for Microsoft "
+"Kinect for Windows Software Development Kit for at kunne hente den binære "
+"firmware krævet af pakken kinect-audio-setup."
+
+#. Type: error
+#. Description
+#: ../templates:3001
+msgid "You can do this later with \"dpkg-reconfigure kinect-audio-setup\"."
+msgstr "Du kan gøre dette senere med »dpkg-reconfigure kinect-audio-setup«."
+
