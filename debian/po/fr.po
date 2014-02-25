@@ -1,0 +1,63 @@
+# Translation to french of kinect-audio-setup debconf templates.
+# Copyright (C) 2014, French l10n team <debian-l10n-french@lists.debian.org>
+# This file is distributed under the same license as the kinect-audio-setup package.
+# Julien Patriarca <leatherface@debian.org», 2014.
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: kinect-audio-setup\n"
+"Report-Msgid-Bugs-To: kinect-audio-setup@packages.debian.org\n"
+"POT-Creation-Date: 2014-02-17 18:39+0100\n"
+"PO-Revision-Date: 2014-02-18 15:41+0100\n"
+"Last-Translator: Julien Patriarca <leatherface@debian.org>\n"
+"Language-Team: FRENCH <debian-l10n-french@lists.debian.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: boolean
+#. Description
+#: ../templates:2001
+msgid "Do you accept the Microsoft Kinect for Windows EULA?"
+msgstr ""
+"Acceptez-vous le contrat d'utilisateur final (« EULA ») Microsoft Kinect "
+"pour Windows ?"
+
+#. Type: boolean
+#. Description
+#: ../templates:2001
+msgid ""
+"In order to fetch the binary firmware needed by the kinect-audio-setup "
+"package, you need to agree to the End User License Agreement (EULA) of the "
+"Microsoft Kinect for Windows Software Development Kit:"
+msgstr ""
+"Afin de récupérer le fichier binaire nécessaire au paquet kinect-audio-"
+"setup, vous devez accepter le contrat d'utilisateur final (« EULA ») du "
+"logiciel de développement Microsoft Kinect pour Windows :"
+
+#. Type: error
+#. Description
+#: ../templates:3001
+msgid "EULA not accepted"
+msgstr "EULA non accepté"
+
+#. Type: error
+#. Description
+#: ../templates:3001
+msgid ""
+"You need to accept the End User License Agreement (EULA) of the Microsoft "
+"Kinect for Windows Software Development Kit in order to fetch the binary "
+"firmware needed by the kinect-audio-setup package."
+msgstr ""
+"Vous devez accepter le contrat d'utilisateur final (« EULA ») du logiciel "
+"de développement Microsoft Kinect pour Windows afin de récupérer le fichier "
+"binaire nécessaire au paquet kinect-audio-setup."
+
+#. Type: error
+#. Description
+#: ../templates:3001
+msgid "You can do this later with \"dpkg-reconfigure kinect-audio-setup\"."
+msgstr ""
+"Vous pourrez le faire plus tard avec la commande « dpkg-reconfigure kinect-"
+"audio-setup »."
