@@ -22,16 +22,12 @@ msgstr ""
 #. Type: boolean
 #. Description
 #: ../templates:2001
-#| msgid "Do you accept the Microsoft KinectForWindows EULA?"
 msgid "Do you accept the Microsoft Kinect for Windows EULA?"
 msgstr "Aceita a EULA Kinect para Windows da Microsoft?"
 
 #. Type: boolean
 #. Description
 #: ../templates:2001
-#| msgid ""
-#| "In order to fetch the binary firmware needed by this package you need to "
-#| "agree to the EULA of the Microsoft KinectForWindows SDK:"
 msgid ""
 "In order to fetch the binary firmware needed by the kinect-audio-setup "
 "package, you need to agree to the End User License Agreement (EULA) of the "
@@ -51,9 +47,6 @@ msgstr "EULA não aceite"
 #. Type: error
 #. Description
 #: ../templates:3001
-#| msgid ""
-#| "You need to accept the EULA of Microsoft KinectForWindows SDK in order to "
-#| "fetch the binary firmware needed by this package."
 msgid ""
 "You need to accept the End User License Agreement (EULA) of the Microsoft "
 "Kinect for Windows Software Development Kit in order to fetch the binary "
@@ -66,12 +59,6 @@ msgstr ""
 #. Type: error
 #. Description
 #: ../templates:3001
-#| msgid ""
-#| "You can do this later by calling:\n"
-#| "  dpkg-reconfigure kinect-audio-setup"
 msgid "You can do this later with \"dpkg-reconfigure kinect-audio-setup\"."
 msgstr ""
 "Você pode fazer isto mais tarde com \"dpkg-reconfigure kinect-audio-setup\"."
-
-#~ msgid "http://www.kinectforwindows.org/download/EULA.htm"
-#~ msgstr "http://www.kinectforwindows.org/download/EULA.htm"
