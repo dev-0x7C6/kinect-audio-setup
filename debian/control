@@ -1,5 +1,5 @@
 Source: kinect-audio-setup
-Maintainer: Antonio Ospite <ospite@studenti.unina.it>
+Maintainer: Antonio Ospite <ao2@ao2.it>
 Section: contrib/sound
 XS-Autobuild: no
 Priority: extra
