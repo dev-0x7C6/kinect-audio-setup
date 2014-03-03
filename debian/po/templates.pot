@@ -1,6 +1,6 @@
-# kinect-audio-setup debconf template
-# Copyright (C) 2013  Antonio Ospite <ospite@studenti.unina.it>
-# This file is distributed under the same license as the kinect-audio-setup package.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kinect-audio-setup\n"
 "Report-Msgid-Bugs-To: kinect-audio-setup@packages.debian.org\n"
-"POT-Creation-Date: 2012-02-03 11:51+0100\n"
+"POT-Creation-Date: 2014-02-17 18:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,42 +19,36 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:1001
-msgid "Do you accept the Microsoft KinectForWindows EULA?"
+#: ../templates:2001
+msgid "Do you accept the Microsoft Kinect for Windows EULA?"
 msgstr ""
 
 #. Type: boolean
-#. Description
-#: ../templates:1001
-msgid ""
-"In order to fetch the binary firmware needed by this package you need to "
-"agree to the EULA of the Microsoft KinectForWindows SDK:"
-msgstr ""
-
-#. Type: boolean
-#. Description
-#: ../templates:1001
-msgid "http://www.kinectforwindows.org/download/EULA.htm"
-msgstr ""
-
-#. Type: note
 #. Description
 #: ../templates:2001
+msgid ""
+"In order to fetch the binary firmware needed by the kinect-audio-setup "
+"package, you need to agree to the End User License Agreement (EULA) of the "
+"Microsoft Kinect for Windows Software Development Kit:"
+msgstr ""
+
+#. Type: error
+#. Description
+#: ../templates:3001
 msgid "EULA not accepted"
 msgstr ""
 
-#. Type: note
+#. Type: error
 #. Description
-#: ../templates:2001
+#: ../templates:3001
 msgid ""
-"You need to accept the EULA of Microsoft KinectForWindows SDK in order to "
-"fetch the binary firmware needed by this package."
+"You need to accept the End User License Agreement (EULA) of the Microsoft "
+"Kinect for Windows Software Development Kit in order to fetch the binary "
+"firmware needed by the kinect-audio-setup package."
 msgstr ""
 
-#. Type: note
+#. Type: error
 #. Description
-#: ../templates:2001
-msgid ""
-"You can do this later by calling:\n"
-"  dpkg-reconfigure kinect-audio-setup"
+#: ../templates:3001
+msgid "You can do this later with \"dpkg-reconfigure kinect-audio-setup\"."
 msgstr ""
