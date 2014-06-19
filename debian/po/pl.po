@@ -1,26 +1,29 @@
-# Italian (Italy) kinect-audio-setup debconf translation
-# Copyright (C) 2013  Antonio Ospite <ao2@ao2.it>
+# Translation of kinect-audio-setup debconf templates to Polish.
+# Copyright (C) 2014
 # This file is distributed under the same license as the kinect-audio-setup package.
-# Antonio Ospite <ao2@ao2.it>
 #
+# Michał Kułach <michal.kulach@gmail.com>, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: kinect-audio-setup\n"
 "Report-Msgid-Bugs-To: kinect-audio-setup@packages.debian.org\n"
 "POT-Creation-Date: 2014-02-17 18:39+0100\n"
-"PO-Revision-Date: 2013-11-19 17:31+0100\n"
-"Last-Translator: Antonio Ospite <ao2@ao2.it>\n"
-"Language-Team: ITALIAN <debian-l10n-italian@lists.debian.org>\n"
-"Language: it\n"
+"PO-Revision-Date: 2014-03-03 19:06+0100\n"
+"Last-Translator: Michał Kułach <michal.kulach@gmail.com>\n"
+"Language-Team: Polish <debian-l10n-polish@lists.debian.org>\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 1.4\n"
 
 #. Type: boolean
 #. Description
 #: ../templates:2001
 msgid "Do you accept the Microsoft Kinect for Windows EULA?"
-msgstr "Accetti la EULA di Microsoft Kinect For Windows?"
+msgstr "Zaakceptować umowę licencyjną do Microsoft Kinect?"
 
 #. Type: boolean
 #. Description
@@ -30,15 +33,15 @@ msgid ""
 "package, you need to agree to the End User License Agreement (EULA) of the "
 "Microsoft Kinect for Windows Software Development Kit:"
 msgstr ""
-"Per poter scaricare il firmware binario richiesto dal pacchetto kinect-audio-"
-"setup devi accettare l'accordo di licenza con l'utente finale (EULA) del "
-"Software Development Kit per Microsoft Kinect For Windows:"
+"Aby pobrać oprogramowanie wymagane przez pakiet kinect-audio-setup konieczne "
+"jest zaakceptowanie umowy licencyjnej (EULA) Microsoft Kinect do Windows "
+"Software Development Kit:"
 
 #. Type: error
 #. Description
 #: ../templates:3001
 msgid "EULA not accepted"
-msgstr "EULA non accettata"
+msgstr "Umowa nie została zaakceptowana"
 
 #. Type: error
 #. Description
@@ -48,13 +51,14 @@ msgid ""
 "Kinect for Windows Software Development Kit in order to fetch the binary "
 "firmware needed by the kinect-audio-setup package."
 msgstr ""
-"Devi accettare l'accordo di licenza con l'utente finale (EULA) del Software "
-"Development Kit per Microsoft Kinect For Windows per poter scaricare il "
-"firmware binario richiesto dal pacchetto kinect-audio-setup."
+"Wymagane jest zaakceptowanie umowy licencyjnej (EULA) Microsoft Kinect do "
+"Windows Software Development Kit, aby pobrać oprogramowanie wymagane przez "
+"pakiet kinect-audio-setup."
 
 #. Type: error
 #. Description
 #: ../templates:3001
 msgid "You can do this later with \"dpkg-reconfigure kinect-audio-setup\"."
 msgstr ""
-"Puoi fare ciò in seguito eseguendo \"dpkg-reconfigure kinect-audio-setup\"."
+"Można uczynić to później, wydając polecenie \"dpkg-reconfigure kinect-audio-"
+"setup\"."
