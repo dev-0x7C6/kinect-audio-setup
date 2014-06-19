@@ -1,0 +1,59 @@
+# Czech PO debconf template translation of kinect-audio-setup.
+# Copyright (C) 2014 Michal Simunek <michal.simunek@gmail.com>
+# This file is distributed under the same license as the kinect-audio-setup package.
+# Michal Simunek <michal.simunek@gmail.com>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kinect-audio-setup 0.3-2\n"
+"Report-Msgid-Bugs-To: kinect-audio-setup@packages.debian.org\n"
+"POT-Creation-Date: 2014-02-17 18:39+0100\n"
+"PO-Revision-Date: 2014-06-12 12:05+0200\n"
+"Last-Translator: Michal Simunek <michal.simunek@gmail.com>\n"
+"Language-Team: Czech <debian-l10n-czech@lists.debian.org>\n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: boolean
+#. Description
+#: ../templates:2001
+msgid "Do you accept the Microsoft Kinect for Windows EULA?"
+msgstr "Přijímáte EULA z Microsoft Kinect for Windows?"
+
+#. Type: boolean
+#. Description
+#: ../templates:2001
+msgid ""
+"In order to fetch the binary firmware needed by the kinect-audio-setup "
+"package, you need to agree to the End User License Agreement (EULA) of the "
+"Microsoft Kinect for Windows Software Development Kit:"
+msgstr ""
+"K získání binárního firmware, který balíček kinect-audio-setup potřebuje, je "
+"nutné potvrdit souhlas s End User License Agreement (EULA) z Microsoft "
+"Kinect for Windows Software Development Kit:"
+
+#. Type: error
+#. Description
+#: ../templates:3001
+msgid "EULA not accepted"
+msgstr "EULA nebyla přijata"
+
+#. Type: error
+#. Description
+#: ../templates:3001
+msgid ""
+"You need to accept the End User License Agreement (EULA) of the Microsoft "
+"Kinect for Windows Software Development Kit in order to fetch the binary "
+"firmware needed by the kinect-audio-setup package."
+msgstr ""
+"K získání binárního firmware, který balíček kinect-audio-setup potřebuje, je "
+"nutné potvrdit souhlas s End User License Agreement (EULA) z Microsoft "
+"Kinect for Windows Software Development Kit."
+
+#. Type: error
+#. Description
+#: ../templates:3001
+msgid "You can do this later with \"dpkg-reconfigure kinect-audio-setup\"."
+msgstr "Můžete tak učinit později s příkazem \"dpkg-reconfigure kinect-audio-setup\"."
