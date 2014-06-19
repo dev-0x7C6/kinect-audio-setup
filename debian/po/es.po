@@ -42,8 +42,8 @@ msgstr ""
 #: ../templates:2001
 msgid "Do you accept the Microsoft Kinect for Windows EULA?"
 msgstr ""
-"¿Acepta la licencia de usuario final («EULA») de Microsoft Kinect "
-"para Windows?"
+"¿Acepta la licencia de usuario final («EULA») de Microsoft Kinect para "
+"Windows?"
 
 #. Type: boolean
 #. Description
@@ -53,9 +53,9 @@ msgid ""
 "package, you need to agree to the End User License Agreement (EULA) of the "
 "Microsoft Kinect for Windows Software Development Kit:"
 msgstr ""
-"Necesita aceptar la licencia de usuario final («EULA») del kit de "
-"desarrollo de software de Microsoft Kinect para Windows para poder obtener "
-"el firmware binario que necesita el paquete kinect-audio-setup:"
+"Necesita aceptar la licencia de usuario final («EULA») del kit de desarrollo "
+"de software de Microsoft Kinect para Windows para poder obtener el firmware "
+"binario que necesita el paquete kinect-audio-setup:"
 
 #. Type: error
 #. Description
@@ -71,9 +71,9 @@ msgid ""
 "Kinect for Windows Software Development Kit in order to fetch the binary "
 "firmware needed by the kinect-audio-setup package."
 msgstr ""
-"Necesita aceptar la licencia de usuario final («EULA») del kit de "
-"desarrollo de software de Microsoft Kinect para Windows para poder obtener "
-"el firmware binario que necesita el paquete kinect-audio-setup."
+"Necesita aceptar la licencia de usuario final («EULA») del kit de desarrollo "
+"de software de Microsoft Kinect para Windows para poder obtener el firmware "
+"binario que necesita el paquete kinect-audio-setup."
 
 #. Type: error
 #. Description

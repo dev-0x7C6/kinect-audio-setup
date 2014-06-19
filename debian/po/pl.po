@@ -60,7 +60,5 @@ msgstr ""
 #: ../templates:3001
 msgid "You can do this later with \"dpkg-reconfigure kinect-audio-setup\"."
 msgstr ""
-"Można uczynić to później, wydając polecenie \"dpkg-reconfigure "
-"kinect-audio-setup\"."
-
-
+"Można uczynić to później, wydając polecenie \"dpkg-reconfigure kinect-audio-"
+"setup\"."

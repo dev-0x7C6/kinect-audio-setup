@@ -2,7 +2,7 @@
 # Copyright (C) 2014, French l10n team <debian-l10n-french@lists.debian.org>
 # This file is distributed under the same license as the kinect-audio-setup package.
 # Julien Patriarca <leatherface@debian.org», 2014.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: kinect-audio-setup\n"
@@ -50,8 +50,8 @@ msgid ""
 "Kinect for Windows Software Development Kit in order to fetch the binary "
 "firmware needed by the kinect-audio-setup package."
 msgstr ""
-"Vous devez accepter le contrat d'utilisateur final (« EULA ») du logiciel "
-"de développement Microsoft Kinect pour Windows afin de récupérer le fichier "
+"Vous devez accepter le contrat d'utilisateur final (« EULA ») du logiciel de "
+"développement Microsoft Kinect pour Windows afin de récupérer le fichier "
 "binaire nécessaire au paquet kinect-audio-setup."
 
 #. Type: error

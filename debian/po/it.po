@@ -30,9 +30,9 @@ msgid ""
 "package, you need to agree to the End User License Agreement (EULA) of the "
 "Microsoft Kinect for Windows Software Development Kit:"
 msgstr ""
-"Per poter scaricare il firmware binario richiesto dal pacchetto "
-"kinect-audio-setup devi accettare l'accordo di licenza con l'utente finale "
-"(EULA) del Software Development Kit per Microsoft Kinect For Windows:"
+"Per poter scaricare il firmware binario richiesto dal pacchetto kinect-audio-"
+"setup devi accettare l'accordo di licenza con l'utente finale (EULA) del "
+"Software Development Kit per Microsoft Kinect For Windows:"
 
 #. Type: error
 #. Description
