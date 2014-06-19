@@ -1,8 +1,38 @@
-kinect-audio-setup (0.3-2) UNRELEASED; urgency=medium
+kinect-audio-setup (0.3-2) unstable; urgency=medium
 
   * debian/patches: add a patch to make kinect_upload_fw work with more devices
+  * debian/po: add Portuguese translation for debconf messages.
+    Thanks to Américo Monteiro (Closes: #733259)
+  * debian/po/pt.po: fix a typo in a comment s/Translalion/Translation/
+  * debian/{control,templates}: use the text reviewed by debian-l10n.
+    Thanks to Christian PERRIER and Justin B Rye (Closes: #733300)
+  * debian: update Maintainer email address
+  * debian/po: update Portuguese translation of debconf templates.
+    Thanks to Américo Monteiro (Closes: #733259)
+  * debian/po: add Russian translation of debconf templates.
+    Thanks to Yuri Kozlov (Closes: #739421)
+  * debian/po: add Danish translation of debconf templates.
+    Thanks to Joe Hansen (Closes: #739747)
+  * debian/po: add French translation of debconf templates.
+    Thanks to Julien Patriarca (Closes: #739870)
+  * debian/po: add German translation of debconf templates.
+    Thanks to Stephan Beck, Christian PERRIER (Closes: #739948)
+  * debian/po: update Italian translation fo the debconf templates
+    (Closes: #740075)
+  * debian/po/pt.po: remove the old untranslated strings
+  * debian/po: update templates.pot
+  * debian/po: add Spanish translation of debconf templates.
+    Thanks to Matías A. Bellone (Closes: #740570)
+  * debian/po: add Polish translation of debconf templates.
+    Thanks to Michał Kułach (Closes: #740629)
+  * debian/po: add Japanese translation of debconf templates.
+    Thanks to victory (Closes: #740713)
+  * debian/po: reformat and cleanup translations.
+    Thanks to Christian PERRIER
+  * debian/po: add Czech translation of debconf templates.
+    Thanks to Michal Šimůnek (Closes: #751415)
 
- -- Antonio Ospite <ospite@studenti.unina.it>  Wed, 11 Dec 2013 12:42:48 +0100
+ -- Antonio Ospite <ao2@ao2.it>  Thu, 19 Jun 2014 13:00:21 +0200
 
 kinect-audio-setup (0.3-1) unstable; urgency=medium
 
