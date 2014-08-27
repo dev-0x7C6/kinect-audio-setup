@@ -1,0 +1,64 @@
+# Turkish translation of kinect-audio-setup package
+# Copyright (C) 2014 Mert Dirik
+# This file is distributed under the same license as the kinect-audio-setup package.
+# Mert Dirik <mertdirik@gmail.com>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kinect-audio-setup\n"
+"Report-Msgid-Bugs-To: kinect-audio-setup@packages.debian.org\n"
+"POT-Creation-Date: 2014-02-17 18:39+0100\n"
+"PO-Revision-Date: 2014-08-09 00:40+0200\n"
+"Last-Translator: Mert Dirik <mertdirik@gmail.com>\n"
+"Language-Team: Debian L10n Turkish <debian-l10n-turkish@lists.debian.org>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#. Type: boolean
+#. Description
+#: ../templates:2001
+msgid "Do you accept the Microsoft Kinect for Windows EULA?"
+msgstr ""
+"Windows için Microsoft Kinect Son Kullanıcı Lisans Anlaşmasını kabul ediyor "
+"musunuz?"
+
+#. Type: boolean
+#. Description
+#: ../templates:2001
+msgid ""
+"In order to fetch the binary firmware needed by the kinect-audio-setup "
+"package, you need to agree to the End User License Agreement (EULA) of the "
+"Microsoft Kinect for Windows Software Development Kit:"
+msgstr ""
+"kinect-audio-setup paketi için gerekli olan bellenim (firmware) dosyasını "
+"indirebilmek için \"Windows için Microsoft Kinect Yazılım Geliştirme Kiti "
+"Son Kullanıcı Lisans Anlaşması\"nı onaylamanız gerekmektedir."
+
+#. Type: error
+#. Description
+#: ../templates:3001
+msgid "EULA not accepted"
+msgstr "Anlaşma kabul edilmedi"
+
+#. Type: error
+#. Description
+#: ../templates:3001
+msgid ""
+"You need to accept the End User License Agreement (EULA) of the Microsoft "
+"Kinect for Windows Software Development Kit in order to fetch the binary "
+"firmware needed by the kinect-audio-setup package."
+msgstr ""
+"kinect-audio-setup paketi için gerekli olan bellenim (firmware) dosyasını "
+"indirebilmek için \"Windows için Microsoft Kinect Yazılım Geliştirme Kiti "
+"Son Kullanıcı Lisans Anlaşması\"nı onaylamanız gerekmektedir."
+
+#. Type: error
+#. Description
+#: ../templates:3001
+msgid "You can do this later with \"dpkg-reconfigure kinect-audio-setup\"."
+msgstr ""
+"Anlaşmayı daha sonra onaylamak için \"dpkg-reconfigure kinect-audio-setup\" "
+"komutunu çalıştırın."
