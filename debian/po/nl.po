@@ -1,0 +1,62 @@
+# Dutch translation of kinect-audio-setup debconf templates.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the kinect-audio-setup package.
+# Frans Spiesschaert <Frans.Spiesschaert@yucom.be>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kinect-audio-setup\n"
+"Report-Msgid-Bugs-To: kinect-audio-setup@packages.debian.org\n"
+"POT-Creation-Date: 2014-02-17 18:39+0100\n"
+"PO-Revision-Date: 2014-10-21 18:24+0200\n"
+"Last-Translator: Frans Spiesschaert <Frans.Spiesschaert@yucom.be>\n"
+"Language-Team: Debian Dutch l10n Team <debian-l10n-dutch@lists.debian.org>\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. Type: boolean
+#. Description
+#: ../templates:2001
+msgid "Do you accept the Microsoft Kinect for Windows EULA?"
+msgstr "Gaat u akkoord met de EO van Microsoft Kinect voor Windows?"
+
+#. Type: boolean
+#. Description
+#: ../templates:2001
+msgid ""
+"In order to fetch the binary firmware needed by the kinect-audio-setup "
+"package, you need to agree to the End User License Agreement (EULA) of the "
+"Microsoft Kinect for Windows Software Development Kit:"
+msgstr ""
+"Om de binaire firmware te kunnen ophalen die het pakket kinect-audio-setup "
+"nodig heeft, moet u de EindgebruikersOvereenkomst (EO) van de "
+"Softwareontwikkelaarskit van Microsoft Kinect voor Windows aanvaarden:"
+
+#. Type: error
+#. Description
+#: ../templates:3001
+msgid "EULA not accepted"
+msgstr "EO niet aanvaard"
+
+#. Type: error
+#. Description
+#: ../templates:3001
+msgid ""
+"You need to accept the End User License Agreement (EULA) of the Microsoft "
+"Kinect for Windows Software Development Kit in order to fetch the binary "
+"firmware needed by the kinect-audio-setup package."
+msgstr ""
+"U dient akkoord te gaan met de EindgebruikersOvereenkomst (EO) van de "
+"Softwareontwikkelaarskit van Microsoft Kinect voor Windows om de binaire "
+"firmware te kunnen ophalen die het pakket kinect-audio-setup nodig heeft."
+
+#. Type: error
+#. Description
+#: ../templates:3001
+msgid "You can do this later with \"dpkg-reconfigure kinect-audio-setup\"."
+msgstr ""
+"U kunt dit later doen met de opdracht \"dpkg-reconfigure kinect-audio-setup"
+"\"."
