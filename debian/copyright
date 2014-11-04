@@ -2,6 +2,10 @@ Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: kinect-audio-setup
 Source: http://git.ao2.it/kinect-audio-setup.git
 
+Files: *
+Copyright: 2011-2014, Antonio Ospite <ao2@ao2.it>
+License: GPL-2+
+
 Files: kinect_upload_fw/*
 Copyright: 2011 Drew Fisher <drew.m.fisher@gmail.com>
 License: BSD-2-Clause
