@@ -217,13 +217,13 @@ int main(int argc, char** argv) {
 	unsigned char page[0x4000];
 	int read;
 	do {
-		read = fread(page, 1, 0x4000, fw);
+		read = (int)fread(page, 1, 0x4000, fw);
 		if (read <= 0) {
 			break;
 		}
 		//LOG("");
 		cmd.seq = fn_le32(seq);
-		cmd.bytes = fn_le32(read);
+		cmd.bytes = fn_le32((unsigned int)read);
 		cmd.cmd = fn_le32(0x03);
 		cmd.write_addr = fn_le32(addr);
 		LOG("About to send: ");
