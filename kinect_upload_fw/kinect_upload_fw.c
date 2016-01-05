@@ -259,38 +259,79 @@ int main(int argc, char *argv[]) {
 		return -errno;
 	}
 
-	libusb_init(NULL);
+	ret = libusb_init(NULL);
+	if (ret < 0) {
+		fprintf(stderr, "libusb_init failed: %s\n",
+			libusb_error_name(ret));
+		goto out;
+	}
+
 	libusb_set_debug(NULL, 3);
 
 	dev = libusb_open_device_with_vid_pid(NULL, KINECT_AUDIO_VID, KINECT_AUDIO_PID);
 	if (dev == NULL) {
-		fprintf(stderr, "Couldn't open device.\n");
-		ret = -ENODEV;
-		goto fail_libusb_open;
+		fprintf(stderr, "libusb_open failed: %s\n", strerror(errno));
+		ret = -errno;
+		goto out_libusb_exit;
 	}
 
 	int current_configuration = -1;
-	libusb_get_configuration(dev, &current_configuration);
-	if (current_configuration != KINECT_AUDIO_CONFIGURATION)
-		libusb_set_configuration(dev, KINECT_AUDIO_CONFIGURATION);
+	ret = libusb_get_configuration(dev, &current_configuration);
+	if (ret < 0) {
+		fprintf(stderr, "libusb_get_configuration failed: %s\n",
+			libusb_error_name(ret));
+		goto out_libusb_close;
+	}
 
-	libusb_claim_interface(dev, KINECT_AUDIO_INTERFACE);
-
-	current_configuration = -1;
-	libusb_get_configuration(dev, &current_configuration);
 	if (current_configuration != KINECT_AUDIO_CONFIGURATION) {
-		ret = -ENODEV;
-		goto cleanup;
+		ret = libusb_set_configuration(dev, KINECT_AUDIO_CONFIGURATION);
+		if (ret < 0) {
+			fprintf(stderr, "libusb_set_configuration failed: %s\n",
+				libusb_error_name(ret));
+			fprintf(stderr, "Cannot set configuration %d\n",
+				KINECT_AUDIO_CONFIGURATION);
+			goto out_libusb_close;
+		}
+	}
+
+	ret = libusb_claim_interface(dev, KINECT_AUDIO_INTERFACE);
+	if (ret < 0) {
+		fprintf(stderr, "libusb_claim_interface failed: %s\n",
+			libusb_error_name(ret));
+		fprintf(stderr, "Cannot claim interface %d\n",
+			KINECT_AUDIO_INTERFACE);
+		goto out_libusb_close;
+	}
+
+	/* 
+	 * Checking that the configuration has not changed, as suggested in
+	 * http://libusb.sourceforge.net/api-1.0/caveats.html
+	 */
+	current_configuration = -1;
+	ret = libusb_get_configuration(dev, &current_configuration);
+	if (ret < 0) {
+		fprintf(stderr, "libusb_get_configuration after claim failed: %s\n",
+			libusb_error_name(ret));
+		goto out_libusb_release_interface;
+	}
+
+	if (current_configuration != KINECT_AUDIO_CONFIGURATION) {
+		fprintf(stderr, "libusb configuration changed (expected: %d, current: %d)\n",
+			KINECT_AUDIO_CONFIGURATION, current_configuration);
+		ret = -EINVAL;
+		goto out_libusb_release_interface;
 	}
 
 	ret = upload_firmware(fw);
 	// Now the device reenumerates.
 
-cleanup:
+out_libusb_release_interface:
 	libusb_release_interface(dev, KINECT_AUDIO_INTERFACE);
+out_libusb_close:
 	libusb_close(dev);
-fail_libusb_open:
+out_libusb_exit:
 	libusb_exit(NULL);
+out:
 	fclose(fw);
 	return ret;
 }
