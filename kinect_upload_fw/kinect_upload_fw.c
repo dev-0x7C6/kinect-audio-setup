@@ -259,6 +259,7 @@ int main(int argc, char** argv) {
 	// Now the device reenumerates.
 
 cleanup:
+	libusb_release_interface(dev, KINECT_AUDIO_INTERFACE);
 	libusb_close(dev);
 fail_libusb_open:
 	libusb_exit(NULL);
