@@ -256,7 +256,7 @@ int main(int argc, char *argv[]) {
 	FILE *fw = fopen(filename, "rb");
 	if (fw == NULL) {
 		fprintf(stderr, "Failed to open %s: %s\n", filename, strerror(errno));
-		return errno;
+		return -errno;
 	}
 
 	libusb_init(NULL);
