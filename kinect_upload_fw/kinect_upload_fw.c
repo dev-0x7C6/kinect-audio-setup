@@ -84,6 +84,7 @@ static void dump_bl_cmd(bootloader_command cmd) {
 static int get_first_reply(void) {
 	unsigned char buffer[512];
 	int res;
+
 	int transferred = 0;
 	res = libusb_bulk_transfer(dev, KINECT_AUDIO_IN_EP, buffer, 512, &transferred, 0);
 	if (res != 0 ) {
@@ -155,18 +156,23 @@ static int upload_firmware(FILE *fw) {
 
 	int transferred = 0;
 
-	res = libusb_bulk_transfer(dev, KINECT_AUDIO_OUT_EP, (unsigned char*)&cmd, sizeof(cmd), &transferred, 0);
+	res = libusb_bulk_transfer(dev, KINECT_AUDIO_OUT_EP, (unsigned char *)&cmd, sizeof(cmd), &transferred, 0);
 	if (res != 0 || transferred != sizeof(cmd)) {
 		LOG("Error: res: %d\ttransferred: %d (expected %zu)\n", res, transferred, sizeof(cmd));
 		goto out;
 	}
-	res = get_first_reply(); // This first one doesn't have the usual magic bytes at the beginning, and is 96 bytes long - much longer than the usual 12-byte replies.
+
+	// This first one doesn't have the usual magic bytes at the beginning,
+	// and is 96 bytes long - much longer than the usual 12-byte replies.
+	res = get_first_reply();
 	if (res < 0) {
 		LOG("get_first_reply() failed");
 		goto out;
 	}
 
-	res = get_reply(); // I'm not sure why we do this twice here, but maybe it'll make sense later.
+	// I'm not sure why we do this twice here, but maybe it'll make sense
+	// later.
+	res = get_reply();
 	if (res < 0) {
 		LOG("First get_reply() failed");
 		goto out;
@@ -194,7 +200,7 @@ static int upload_firmware(FILE *fw) {
 		dump_bl_cmd(cmd);
 		// Send it off!
 		transferred = 0;
-		res = libusb_bulk_transfer(dev, KINECT_AUDIO_OUT_EP, (unsigned char*)&cmd, sizeof(cmd), &transferred, 0);
+		res = libusb_bulk_transfer(dev, KINECT_AUDIO_OUT_EP, (unsigned char *)&cmd, sizeof(cmd), &transferred, 0);
 		if (res != 0 || transferred != sizeof(cmd)) {
 			LOG("Error: res: %d\ttransferred: %d (expected %zu)\n", res, transferred, sizeof(cmd));
 			goto out;
@@ -226,7 +232,7 @@ static int upload_firmware(FILE *fw) {
 	cmd.write_addr = fn_le32(0x00080030);
 	dump_bl_cmd(cmd);
 	transferred = 0;
-	res = libusb_bulk_transfer(dev, KINECT_AUDIO_OUT_EP, (unsigned char*)&cmd, sizeof(cmd), &transferred, 0);
+	res = libusb_bulk_transfer(dev, KINECT_AUDIO_OUT_EP, (unsigned char *)&cmd, sizeof(cmd), &transferred, 0);
 	if (res != 0 || transferred != sizeof(cmd)) {
 		LOG("Error: res: %d\ttransferred: %d (expected %zu)\n", res, transferred, sizeof(cmd));
 		goto out;
@@ -238,16 +244,16 @@ out:
 	return res;
 }
 
-int main(int argc, char** argv) {
+int main(int argc, char *argv[]) {
 	char default_filename[] = "firmware.bin";
-	char* filename = default_filename;
+	char *filename = default_filename;
 	int ret = 0;
 
 	if (argc == 2) {
 		filename = argv[1];
 	}
 
-	FILE* fw = fopen(filename, "rb");
+	FILE *fw = fopen(filename, "rb");
 	if (fw == NULL) {
 		fprintf(stderr, "Failed to open %s: %s\n", filename, strerror(errno));
 		return errno;
