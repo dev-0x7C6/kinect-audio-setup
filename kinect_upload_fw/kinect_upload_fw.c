@@ -197,7 +197,16 @@ int main(int argc, char** argv) {
 		goto cleanup;
 	}
 	res = get_first_reply(); // This first one doesn't have the usual magic bytes at the beginning, and is 96 bytes long - much longer than the usual 12-byte replies.
+	if (res < 0) {
+		LOG("get_first_reply() failed");
+		goto cleanup;
+	}
+
 	res = get_reply(); // I'm not sure why we do this twice here, but maybe it'll make sense later.
+	if (res < 0) {
+		LOG("First get_reply() failed");
+		goto cleanup;
+	}
 	seq++;
 
 	// Split addr declaration and assignment in order to compile as C++,
@@ -238,6 +247,10 @@ int main(int argc, char** argv) {
 			bytes_sent += to_send;
 		}
 		res = get_reply();
+		if (res < 0) {
+			LOG("get_reply failed");
+			goto cleanup;
+		}
 
 		addr += (uint32_t)read;
 		seq++;
