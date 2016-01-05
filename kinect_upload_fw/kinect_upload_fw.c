@@ -38,6 +38,13 @@
 
 #include "endian.h"
 
+#define KINECT_AUDIO_VID           0x045e
+#define KINECT_AUDIO_PID           0x02ad
+#define KINECT_AUDIO_CONFIGURATION 1
+#define KINECT_AUDIO_INTERFACE     0
+#define KINECT_AUDIO_IN_EP         0x81
+#define KINECT_AUDIO_OUT_EP        0x01
+
 static libusb_device_handle *dev;
 static unsigned int seq;
 
@@ -78,7 +85,7 @@ static int get_first_reply(void) {
 	unsigned char buffer[512];
 	int res;
 	int transferred = 0;
-	res = libusb_bulk_transfer(dev, 0x81, buffer, 512, &transferred, 0);
+	res = libusb_bulk_transfer(dev, KINECT_AUDIO_IN_EP, buffer, 512, &transferred, 0);
 	if (res != 0 ) {
 		LOG("Error reading first reply: %d\ttransferred: %d (expected %d)\n", res, transferred, 0x60);
 		return res;
@@ -103,7 +110,7 @@ static int get_reply(void) {
 	int res;
 	int transferred = 0;
 
-	res = libusb_bulk_transfer(dev, 0x81, reply.dump, 512, &transferred, 0);
+	res = libusb_bulk_transfer(dev, KINECT_AUDIO_IN_EP, reply.dump, 512, &transferred, 0);
 	if (res != 0 || transferred != sizeof(status_code)) {
 		LOG("Error reading reply: %d\ttransferred: %d (expected %zu)\n", res, transferred, sizeof(status_code));
 		return res;
@@ -148,7 +155,7 @@ int main(int argc, char** argv) {
 	libusb_init(NULL);
 	libusb_set_debug(NULL, 3);
 
-	dev = libusb_open_device_with_vid_pid(NULL, 0x045e, 0x02ad);
+	dev = libusb_open_device_with_vid_pid(NULL, KINECT_AUDIO_VID, KINECT_AUDIO_PID);
 	if (dev == NULL) {
 		fprintf(stderr, "Couldn't open device.\n");
 		res = -ENODEV;
@@ -157,14 +164,14 @@ int main(int argc, char** argv) {
 
 	int current_configuration = -1;
 	libusb_get_configuration(dev, &current_configuration);
-	if (current_configuration != 1)
-		libusb_set_configuration(dev, 1);
+	if (current_configuration != KINECT_AUDIO_CONFIGURATION)
+		libusb_set_configuration(dev, KINECT_AUDIO_CONFIGURATION);
 
-	libusb_claim_interface(dev, 0);
+	libusb_claim_interface(dev, KINECT_AUDIO_INTERFACE);
 
 	current_configuration = -1;
 	libusb_get_configuration(dev, &current_configuration);
-	if (current_configuration != 1) {
+	if (current_configuration != KINECT_AUDIO_CONFIGURATION) {
 		res = -ENODEV;
 		goto cleanup;
 	}
@@ -184,7 +191,7 @@ int main(int argc, char** argv) {
 
 	int transferred = 0;
 
-	res = libusb_bulk_transfer(dev, 1, (unsigned char*)&cmd, sizeof(cmd), &transferred, 0);
+	res = libusb_bulk_transfer(dev, KINECT_AUDIO_OUT_EP, (unsigned char*)&cmd, sizeof(cmd), &transferred, 0);
 	if (res != 0 || transferred != sizeof(cmd)) {
 		LOG("Error: res: %d\ttransferred: %d (expected %zu)\n", res, transferred, sizeof(cmd));
 		goto cleanup;
@@ -214,7 +221,7 @@ int main(int argc, char** argv) {
 		dump_bl_cmd(cmd);
 		// Send it off!
 		transferred = 0;
-		res = libusb_bulk_transfer(dev, 1, (unsigned char*)&cmd, sizeof(cmd), &transferred, 0);
+		res = libusb_bulk_transfer(dev, KINECT_AUDIO_OUT_EP, (unsigned char*)&cmd, sizeof(cmd), &transferred, 0);
 		if (res != 0 || transferred != sizeof(cmd)) {
 			LOG("Error: res: %d\ttransferred: %d (expected %zu)\n", res, transferred, sizeof(cmd));
 			goto cleanup;
@@ -223,7 +230,7 @@ int main(int argc, char** argv) {
 		while (bytes_sent < read) {
 			int to_send = (read - bytes_sent > 512 ? 512 : read - bytes_sent);
 			transferred = 0;
-			res = libusb_bulk_transfer(dev, 1, &page[bytes_sent], to_send, &transferred, 0);
+			res = libusb_bulk_transfer(dev, KINECT_AUDIO_OUT_EP, &page[bytes_sent], to_send, &transferred, 0);
 			if (res != 0 || transferred != to_send) {
 				LOG("Error: res: %d\ttransferred: %d (expected %d)\n", res, transferred, to_send);
 				goto cleanup;
@@ -242,7 +249,7 @@ int main(int argc, char** argv) {
 	cmd.write_addr = fn_le32(0x00080030);
 	dump_bl_cmd(cmd);
 	transferred = 0;
-	res = libusb_bulk_transfer(dev, 1, (unsigned char*)&cmd, sizeof(cmd), &transferred, 0);
+	res = libusb_bulk_transfer(dev, KINECT_AUDIO_OUT_EP, (unsigned char*)&cmd, sizeof(cmd), &transferred, 0);
 	if (res != 0 || transferred != sizeof(cmd)) {
 		LOG("Error: res: %d\ttransferred: %d (expected %zu)\n", res, transferred, sizeof(cmd));
 		goto cleanup;
