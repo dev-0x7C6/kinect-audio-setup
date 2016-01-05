@@ -241,7 +241,7 @@ out:
 int main(int argc, char** argv) {
 	char default_filename[] = "firmware.bin";
 	char* filename = default_filename;
-	int res = 0;
+	int ret = 0;
 
 	if (argc == 2) {
 		filename = argv[1];
@@ -259,7 +259,7 @@ int main(int argc, char** argv) {
 	dev = libusb_open_device_with_vid_pid(NULL, KINECT_AUDIO_VID, KINECT_AUDIO_PID);
 	if (dev == NULL) {
 		fprintf(stderr, "Couldn't open device.\n");
-		res = -ENODEV;
+		ret = -ENODEV;
 		goto fail_libusb_open;
 	}
 
@@ -273,11 +273,11 @@ int main(int argc, char** argv) {
 	current_configuration = -1;
 	libusb_get_configuration(dev, &current_configuration);
 	if (current_configuration != KINECT_AUDIO_CONFIGURATION) {
-		res = -ENODEV;
+		ret = -ENODEV;
 		goto cleanup;
 	}
 
-	res = upload_firmware(fw);
+	ret = upload_firmware(fw);
 	// Now the device reenumerates.
 
 cleanup:
@@ -286,5 +286,5 @@ cleanup:
 fail_libusb_open:
 	libusb_exit(NULL);
 	fclose(fw);
-	return res;
+	return ret;
 }
