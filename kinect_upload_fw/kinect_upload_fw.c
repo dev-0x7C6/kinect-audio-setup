@@ -137,6 +137,107 @@ static int get_reply(void) {
 	return res;
 }
 
+static int upload_firmware(FILE *fw) {
+	int res;
+
+	seq = 1;
+
+	bootloader_command cmd;
+	cmd.magic = fn_le32(0x06022009);
+	cmd.seq = fn_le32(seq);
+	cmd.bytes = fn_le32(0x60);
+	cmd.cmd = fn_le32(0);
+	cmd.write_addr = fn_le32(0x15);
+	cmd.unk = fn_le32(0);
+
+	LOG("About to send: ");
+	dump_bl_cmd(cmd);
+
+	int transferred = 0;
+
+	res = libusb_bulk_transfer(dev, KINECT_AUDIO_OUT_EP, (unsigned char*)&cmd, sizeof(cmd), &transferred, 0);
+	if (res != 0 || transferred != sizeof(cmd)) {
+		LOG("Error: res: %d\ttransferred: %d (expected %zu)\n", res, transferred, sizeof(cmd));
+		goto out;
+	}
+	res = get_first_reply(); // This first one doesn't have the usual magic bytes at the beginning, and is 96 bytes long - much longer than the usual 12-byte replies.
+	if (res < 0) {
+		LOG("get_first_reply() failed");
+		goto out;
+	}
+
+	res = get_reply(); // I'm not sure why we do this twice here, but maybe it'll make sense later.
+	if (res < 0) {
+		LOG("First get_reply() failed");
+		goto out;
+	}
+	seq++;
+
+	// Split addr declaration and assignment in order to compile as C++,
+	// otherwise this would give "jump to label '...' crosses initialization"
+	// errors.
+	uint32_t addr;
+	addr = 0x00080000;
+	unsigned char page[0x4000];
+	int read;
+	do {
+		read = (int)fread(page, 1, 0x4000, fw);
+		if (read <= 0) {
+			break;
+		}
+		//LOG("");
+		cmd.seq = fn_le32(seq);
+		cmd.bytes = fn_le32((unsigned int)read);
+		cmd.cmd = fn_le32(0x03);
+		cmd.write_addr = fn_le32(addr);
+		LOG("About to send: ");
+		dump_bl_cmd(cmd);
+		// Send it off!
+		transferred = 0;
+		res = libusb_bulk_transfer(dev, KINECT_AUDIO_OUT_EP, (unsigned char*)&cmd, sizeof(cmd), &transferred, 0);
+		if (res != 0 || transferred != sizeof(cmd)) {
+			LOG("Error: res: %d\ttransferred: %d (expected %zu)\n", res, transferred, sizeof(cmd));
+			goto out;
+		}
+		int bytes_sent = 0;
+		while (bytes_sent < read) {
+			int to_send = (read - bytes_sent > 512 ? 512 : read - bytes_sent);
+			transferred = 0;
+			res = libusb_bulk_transfer(dev, KINECT_AUDIO_OUT_EP, &page[bytes_sent], to_send, &transferred, 0);
+			if (res != 0 || transferred != to_send) {
+				LOG("Error: res: %d\ttransferred: %d (expected %d)\n", res, transferred, to_send);
+				goto out;
+			}
+			bytes_sent += to_send;
+		}
+		res = get_reply();
+		if (res < 0) {
+			LOG("get_reply failed");
+			goto out;
+		}
+
+		addr += (uint32_t)read;
+		seq++;
+	} while (read > 0);
+
+	cmd.seq = fn_le32(seq);
+	cmd.bytes = fn_le32(0);
+	cmd.cmd = fn_le32(0x04);
+	cmd.write_addr = fn_le32(0x00080030);
+	dump_bl_cmd(cmd);
+	transferred = 0;
+	res = libusb_bulk_transfer(dev, KINECT_AUDIO_OUT_EP, (unsigned char*)&cmd, sizeof(cmd), &transferred, 0);
+	if (res != 0 || transferred != sizeof(cmd)) {
+		LOG("Error: res: %d\ttransferred: %d (expected %zu)\n", res, transferred, sizeof(cmd));
+		goto out;
+	}
+	res = get_reply();
+	seq++;
+
+out:
+	return res;
+}
+
 int main(int argc, char** argv) {
 	char default_filename[] = "firmware.bin";
 	char* filename = default_filename;
@@ -176,99 +277,7 @@ int main(int argc, char** argv) {
 		goto cleanup;
 	}
 
-	seq = 1;
-
-	bootloader_command cmd;
-	cmd.magic = fn_le32(0x06022009);
-	cmd.seq = fn_le32(seq);
-	cmd.bytes = fn_le32(0x60);
-	cmd.cmd = fn_le32(0);
-	cmd.write_addr = fn_le32(0x15);
-	cmd.unk = fn_le32(0);
-
-	LOG("About to send: ");
-	dump_bl_cmd(cmd);
-
-	int transferred = 0;
-
-	res = libusb_bulk_transfer(dev, KINECT_AUDIO_OUT_EP, (unsigned char*)&cmd, sizeof(cmd), &transferred, 0);
-	if (res != 0 || transferred != sizeof(cmd)) {
-		LOG("Error: res: %d\ttransferred: %d (expected %zu)\n", res, transferred, sizeof(cmd));
-		goto cleanup;
-	}
-	res = get_first_reply(); // This first one doesn't have the usual magic bytes at the beginning, and is 96 bytes long - much longer than the usual 12-byte replies.
-	if (res < 0) {
-		LOG("get_first_reply() failed");
-		goto cleanup;
-	}
-
-	res = get_reply(); // I'm not sure why we do this twice here, but maybe it'll make sense later.
-	if (res < 0) {
-		LOG("First get_reply() failed");
-		goto cleanup;
-	}
-	seq++;
-
-	// Split addr declaration and assignment in order to compile as C++,
-	// otherwise this would give "jump to label '...' crosses initialization"
-	// errors.
-	uint32_t addr;
-	addr = 0x00080000;
-	unsigned char page[0x4000];
-	int read;
-	do {
-		read = (int)fread(page, 1, 0x4000, fw);
-		if (read <= 0) {
-			break;
-		}
-		//LOG("");
-		cmd.seq = fn_le32(seq);
-		cmd.bytes = fn_le32((unsigned int)read);
-		cmd.cmd = fn_le32(0x03);
-		cmd.write_addr = fn_le32(addr);
-		LOG("About to send: ");
-		dump_bl_cmd(cmd);
-		// Send it off!
-		transferred = 0;
-		res = libusb_bulk_transfer(dev, KINECT_AUDIO_OUT_EP, (unsigned char*)&cmd, sizeof(cmd), &transferred, 0);
-		if (res != 0 || transferred != sizeof(cmd)) {
-			LOG("Error: res: %d\ttransferred: %d (expected %zu)\n", res, transferred, sizeof(cmd));
-			goto cleanup;
-		}
-		int bytes_sent = 0;
-		while (bytes_sent < read) {
-			int to_send = (read - bytes_sent > 512 ? 512 : read - bytes_sent);
-			transferred = 0;
-			res = libusb_bulk_transfer(dev, KINECT_AUDIO_OUT_EP, &page[bytes_sent], to_send, &transferred, 0);
-			if (res != 0 || transferred != to_send) {
-				LOG("Error: res: %d\ttransferred: %d (expected %d)\n", res, transferred, to_send);
-				goto cleanup;
-			}
-			bytes_sent += to_send;
-		}
-		res = get_reply();
-		if (res < 0) {
-			LOG("get_reply failed");
-			goto cleanup;
-		}
-
-		addr += (uint32_t)read;
-		seq++;
-	} while (read > 0);
-
-	cmd.seq = fn_le32(seq);
-	cmd.bytes = fn_le32(0);
-	cmd.cmd = fn_le32(0x04);
-	cmd.write_addr = fn_le32(0x00080030);
-	dump_bl_cmd(cmd);
-	transferred = 0;
-	res = libusb_bulk_transfer(dev, KINECT_AUDIO_OUT_EP, (unsigned char*)&cmd, sizeof(cmd), &transferred, 0);
-	if (res != 0 || transferred != sizeof(cmd)) {
-		LOG("Error: res: %d\ttransferred: %d (expected %zu)\n", res, transferred, sizeof(cmd));
-		goto cleanup;
-	}
-	res = get_reply();
-	seq++;
+	res = upload_firmware(fw);
 	// Now the device reenumerates.
 
 cleanup:
