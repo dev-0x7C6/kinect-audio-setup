@@ -294,6 +294,8 @@ int main(int argc, char *argv[]) {
 		}
 	}
 
+	libusb_set_auto_detach_kernel_driver(dev, 1);
+
 	ret = libusb_claim_interface(dev, KINECT_AUDIO_INTERFACE);
 	if (ret < 0) {
 		fprintf(stderr, "libusb_claim_interface failed: %s\n",
