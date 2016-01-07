@@ -1,3 +1,21 @@
+kinect-audio-setup (0.4-1) unstable; urgency=medium
+
+  * debian/po: add Turkish translation of debconf templates.
+    Thanks to Mert Dirik (Closes: #757871)
+  * debian/po: add Dutch translation of debconf templates.
+    Thanks to Frans Spiesschaert (Closes: #767491)
+  * debian/copyright: split the license texts from file attribution
+  * debian/copyright: use GPL-2+ as a fallback license
+  * debian/po: add Swedish translation of debconf templates.
+    Thanks to Martin Bagge, Anders Jonsson (Closes: #769869)
+  * debian/po: add Brazilian Portuguese translation of debconf templates.
+    Thanks to Leonardo Santiago Sidon da Rocha (Closes: #810010)
+  * debian/patches: drop all patches, they have been applied upstream
+  * debian/control: bump Standards-Version to 3.9.6
+  * debian/rules: install the NEWS file as the upstream changelog
+
+ -- Antonio Ospite <ao2@ao2.it>  Thu, 07 Jan 2016 19:48:13 +0100
+
 kinect-audio-setup (0.3-2) unstable; urgency=medium
 
   * debian/patches: add a patch to make kinect_upload_fw work with more devices
