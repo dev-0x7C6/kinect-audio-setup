@@ -7,7 +7,7 @@ Build-Depends: debhelper (>= 9),
                po-debconf,
                libusb-1.0-0-dev,
                pkg-config
-Standards-Version: 3.9.5
+Standards-Version: 3.9.6
 Vcs-Browser: http://git.ao2.it/kinect-audio-setup.git/
 Vcs-Git: git://git.ao2.it/kinect-audio-setup.git -b debian
 Homepage: http://git.ao2.it/kinect-audio-setup.git/
