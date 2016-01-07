@@ -2,3 +2,6 @@
 
 %:
 	PREFIX=/usr dh $@ 
+
+override_dh_installchangelogs:
+	dh_installchangelogs NEWS
