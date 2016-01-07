@@ -1,0 +1,6 @@
+News for v0.4:
+==============
+
+  * kinect_upload_fw: fix setting the USB configuration for some devices
+  * kinect_upload_fw: make the code more robust
+  * Drop the Changelog file and use a NEWS file

@@ -30,8 +30,11 @@ CFLAGS += -fno-common \
   -Wswitch-enum \
   -Wundef \
   -Wunreachable-code \
-  -Wunsafe-loop-optimizations \
   -Wwrite-strings
+
+ifneq ($(CC),clang)
+  CFLAGS += -Wunsafe-loop-optimizations
+endif
 
 CFLAGS += $(shell pkg-config --cflags libusb-1.0)
 LDLIBS += $(shell pkg-config --libs libusb-1.0)
