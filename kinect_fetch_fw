@@ -59,7 +59,7 @@ echo -n "Extracting the UAC firmware..."
 echo " done."
 
 FW_FILE=$(ls UACFirmware.* | cut -d ' ' -f 1)
-FIRMWARE_PATH=${FW_DESTDIR}/$(basename "$FW_FILE")
+FIRMWARE_PATH="${FW_DESTDIR}/UACFirmware"
 
 install -d "$FW_DESTDIR"
 install -m 644 "$FW_FILE" "$FIRMWARE_PATH"
