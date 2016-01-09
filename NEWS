@@ -1,3 +1,13 @@
+News for v0.5:
+==============
+
+  * Fix broken links to the Kinect For Windows EULA
+  * kinect_fetch_fw: save the firmware as UACFirmware instead of
+    UACFirmware.C9C6E852_35A3_41DC_A57D_BDDEB43DFD04
+  * Add a kinect_patch_udev_rules script to improve the installation of the
+    udev rules file provided in contrib/
+  * Makefile: add a install_udev_rules target
+
 News for v0.4:
 ==============
 
