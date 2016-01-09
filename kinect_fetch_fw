@@ -60,14 +60,14 @@ echo " done."
 
 FW_FILE=$(ls UACFirmware.* | cut -d ' ' -f 1)
 
-install -d "${DESTDIR}${FW_DESTDIR}"
-install -m 644 "$FW_FILE" "${DESTDIR}${FW_DESTDIR}"
+install -d "${FW_DESTDIR}"
+install -m 644 "$FW_FILE" "${FW_DESTDIR}"
 
 FIRMWARE_PATH=$FW_DESTDIR/$(basename "$FW_FILE")
 
-if [ -f "${DESTDIR}/lib/udev/rules.d/55-kinect_audio.rules" ];
+if [ -f "/lib/udev/rules.d/55-kinect_audio.rules" ];
 then
   sed -e "s|@LOADER_PATH@|$LOADER_PATH|g" \
       -e "s|@FIRMWARE_PATH@|$FIRMWARE_PATH|g" \
-      -i "${DESTDIR}/lib/udev/rules.d/55-kinect_audio.rules"
+      -i "/lib/udev/rules.d/55-kinect_audio.rules"
 fi
