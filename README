@@ -37,7 +37,7 @@ variable on the command line to install it to another location.
 Then install the udev rules to automate the firmware loading:
 
   # make install_udev_rules \
-    FIRMWARE_PATH=/lib/firmware/kinect/UACFirmware
+    FIRMWARE_PATH=/lib/firmware/kinect/UACFirmware \
     LOADER_PATH=/usr/local/sbin/kinect_upload_fw
 
 Then run the firmware fetcher script (remember this is only needed
