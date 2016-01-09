@@ -60,8 +60,8 @@ echo " done."
 
 FW_FILE=$(ls UACFirmware.* | cut -d ' ' -f 1)
 
-install -d "${FW_DESTDIR}"
-install -m 644 "$FW_FILE" "${FW_DESTDIR}"
+install -d "$FW_DESTDIR"
+install -m 644 "$FW_FILE" "$FW_DESTDIR"
 
 FIRMWARE_PATH=$FW_DESTDIR/$(basename "$FW_FILE")
 
