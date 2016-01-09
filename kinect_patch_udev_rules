@@ -1,0 +1,36 @@
+#!/bin/sh
+#
+# kinect_patch_udev_rules - Patch contrib/ udev rules file to load UACFirmware
+#
+# Copyright (C) 2016  Antonio Ospite <ao2@ao2.it>
+#
+# This program is free software. It comes without any warranty, to
+# the extent permitted by applicable law. You can redistribute it
+# and/or modify it under the terms of the Do What The Fuck You Want
+# To Public License, Version 2, as published by Sam Hocevar. See
+# http://sam.zoy.org/wtfpl/COPYING for more details.
+
+set -e
+
+[ $# -lt 3 ] && { echo "usage: $(basename "$0") <firmware path> <kinect_upload_fw path> <55-kinect_audio.rules path>" 1>&2; exit 1; }
+FIRMWARE_PATH="$1"
+LOADER_PATH="$2"
+UDEV_RULES_PATH="$3"
+
+[ "x$FIRMWARE_PATH" != "x" ] || { echo "Empty FIRMWARE_PATH" 1>&2; exit 1;}
+[ "x$LOADER_PATH" != "x" ] || { echo "Empty LOADER_PATH" 1>&2; exit 1;}
+
+# The udev rules file must exist the other files may not exist just yet: they
+# may be under a prefixed path different from the final one, like in the case
+# when this is called at package creation time.
+[ -f "$UDEV_RULES_PATH" ] || { echo "Cannot find the udev rules file: $UDEV_RULES_PATH" 1>&2; exit 1; }
+
+if grep -q "@LOADER_PATH@ @FIRMWARE_PATH@" "$UDEV_RULES_PATH";
+then
+  sed -e "s|@LOADER_PATH@|${LOADER_PATH}|g" \
+      -e "s|@FIRMWARE_PATH@|${FIRMWARE_PATH}|g" \
+      -i "$UDEV_RULES_PATH"
+else
+  echo "$UDEV_RULES_PATH does not contain the expected placeholders." 2>&1
+  exit 1
+fi
