@@ -59,11 +59,10 @@ echo -n "Extracting the UAC firmware..."
 echo " done."
 
 FW_FILE=$(ls UACFirmware.* | cut -d ' ' -f 1)
+FIRMWARE_PATH=$FW_DESTDIR/$(basename "$FW_FILE")
 
 install -d "$FW_DESTDIR"
-install -m 644 "$FW_FILE" "$FW_DESTDIR"
-
-FIRMWARE_PATH=$FW_DESTDIR/$(basename "$FW_FILE")
+install -m 644 "$FW_FILE" "$FIRMWARE_PATH"
 
 if [ -f "/lib/udev/rules.d/55-kinect_audio.rules" ];
 then
