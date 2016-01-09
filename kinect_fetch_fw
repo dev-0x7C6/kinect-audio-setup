@@ -33,7 +33,7 @@ trap "exit 2" 1 2 3 15
 
 cat << EOM
 
-This script is going to download the UAC Firmware for the Microsoft 
+This script is going to download the UAC Firmware for the Microsoft
 Kinect Sensor device from the Microsoft Kinect for Windows SDK:
 http://kinectforwindows.org/
 

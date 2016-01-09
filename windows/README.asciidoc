@@ -40,16 +40,16 @@ Compiling kinect_upload_fw
 Using kinect_upload_fw.exe on Windows
 -------------------------------------
 
-First of all, make sure the drivers from ''libfreenect'' are installed, they are 
+First of all, make sure the drivers from ''libfreenect'' are installed, they are
 under ''platform/windows/inf''.
 
 Download the MSR Kinect SDK from:
 http://download.microsoft.com/download/8/4/C/84C9EF40-EE49-42C2-AE26-C6E30921182F/KinectSDK32.msi
 
-Explore ''KinectSDK32.msi'' using 7-zip from http://www.7-zip.org, extract the 
-''media1.cab'' file in it and extract the firmware file from ''media1.cab'', the 
+Explore ''KinectSDK32.msi'' using 7-zip from http://www.7-zip.org, extract the
+''media1.cab'' file in it and extract the firmware file from ''media1.cab'', the
 firmware file is named ''UACFirmware.*''.
 
-Put ''kinect_upload_fw.exe'', the firmware file and ''kinect_upload_fw.bat'' 
-file in the same directory and double_click on the ''kinect_upload_fw.bat'' 
+Put ''kinect_upload_fw.exe'', the firmware file and ''kinect_upload_fw.bat''
+file in the same directory and double_click on the ''kinect_upload_fw.bat''
 file.

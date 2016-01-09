@@ -1,5 +1,5 @@
 all:
-	$(MAKE) -C kinect_upload_fw 
+	$(MAKE) -C kinect_upload_fw
 
 install:
 	$(MAKE) -C kinect_upload_fw install
