@@ -1,5 +1,6 @@
 /*
  * Copyright 2011 Drew Fisher <drew.m.fisher@gmail.com>. All rights reserved.
+ * Copyright (C) 2016  Antonio Ospite <ao2@ao2.it>
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
