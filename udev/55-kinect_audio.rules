@@ -1,0 +1,2 @@
+# Rule to load the Kinect UAC firmware on the "generic" usb device
+ACTION=="add", SUBSYSTEMS=="usb", ATTRS{idVendor}=="045e", ATTRS{idProduct}=="02ad", RUN+="/usr/local/sbin/kinect_upload_fw /lib/firmware/kinect/UACFirmware"
